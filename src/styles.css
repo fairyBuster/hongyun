@@ -1604,3 +1604,14 @@ html:lang(ar) .phoneInput__container-input--email input {
 .popular .list .item .arcade-tag {
   z-index: 3;
 }
+
+/* emblem 3D asli (logos-google mahjong-ways-ui): tinggi, bukan wordmark lebar */
+.popular .list .item .gamePic img.game-logo {
+  max-width: 86%;
+  max-height: 56%;
+  bottom: 0.14rem;
+}
+.popular .list .item .gamePic:has(> img.game-logo)::after {
+  height: 60%;
+  background: linear-gradient(180deg, rgba(10, 6, 4, 0) 0%, rgba(10, 6, 4, 0.46) 58%, rgba(10, 6, 4, 0.68) 100%);
+}

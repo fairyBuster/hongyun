@@ -1,36 +1,83 @@
-/* ---------- meja PVC: kartu, dadu, overlay hasil ---------- */
+/* ---------- meja PVC 3D: kartu, dadu, overlay hasil ---------- */
 .pc-page {
   padding-bottom: 2rem;
 }
 
+/* meja: rail kayu + felt cekung berperspektif */
 .pc-table {
   position: relative;
-  padding: 0.32rem 0.26rem 0.3rem;
-  border-radius: 0.4rem;
+  isolation: isolate;
+  padding: 0.34rem 0.28rem 0.32rem;
+  border-radius: 0.46rem;
   background:
-    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
-    radial-gradient(90% 70% at 50% 45%, #1f5a42 0%, #133b2c 55%, #0a231a 100%);
-  border: 1px solid rgba(255, 196, 110, 0.42);
+    linear-gradient(158deg, #742435 0%, #43101c 26%, #2a0710 58%, #3f101a 82%, #5a1c28 100%);
+  border: 1px solid rgba(255, 196, 110, 0.5);
   box-shadow:
-    inset 0 0 0 0.05rem rgba(255, 196, 110, 0.12),
-    inset 0 0 0.8rem rgba(0, 0, 0, 0.55),
-    0 0.14rem 0.4rem rgba(0, 0, 0, 0.4);
+    0 0 0 0.055rem #1d060b,
+    0 0 0 0.075rem rgba(255, 196, 110, 0.3),
+    inset 0 0.02rem 0.05rem rgba(255, 226, 176, 0.2),
+    inset 0 -0.09rem 0.22rem rgba(0, 0, 0, 0.6),
+    0 0.3rem 0.55rem rgba(0, 0, 0, 0.55),
+    0 0.08rem 0.16rem rgba(0, 0, 0, 0.42);
   overflow: hidden;
 }
 .pc-table::before {
   content: '';
   position: absolute;
-  inset: 0.12rem;
-  border-radius: 0.3rem;
-  border: 1px dashed rgba(255, 226, 176, 0.16);
+  inset: 0.14rem;
+  border-radius: 0.36rem;
+  border: 1px dashed rgba(255, 226, 176, 0.2);
+  background:
+    radial-gradient(95% 72% at 50% 0%, rgba(255, 255, 255, 0.13), transparent 58%),
+    radial-gradient(70% 50% at 50% 42%, rgba(90, 200, 150, 0.12), transparent 70%),
+    radial-gradient(130% 100% at 50% 46%, #22664a 0%, #154435 54%, #0a251b 100%);
+  box-shadow:
+    inset 0 0 0.07rem rgba(0, 0, 0, 0.55),
+    inset 0 -0.14rem 0.3rem rgba(0, 0, 0, 0.45),
+    inset 0 0.05rem 0.1rem rgba(255, 255, 255, 0.07);
+  transform: perspective(30rem) rotateX(1.8deg);
+  transform-origin: 50% 100%;
   pointer-events: none;
+  z-index: -1;
+}
+.pc-table::after {
+  content: '\2660\FE0E';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-9deg);
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols', serif;
+  font-size: 2.7rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.045);
+  text-shadow: 0 0.02rem 0 rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: -1;
 }
 .pc-table__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.14rem;
   text-align: center;
   font-size: 0.19rem;
   letter-spacing: 0.14rem;
   color: #ffc46e;
-  margin-bottom: 0.14rem;
+  margin-bottom: 0.16rem;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.65),
+    0 0 0.22rem rgba(255, 196, 110, 0.28);
+}
+.pc-table__label::before,
+.pc-table__label::after {
+  content: '';
+  width: 0.46rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 196, 110, 0.55));
+}
+.pc-table__label::after {
+  background: linear-gradient(90deg, rgba(255, 196, 110, 0.55), transparent);
 }
 
 /* ---------- baris kartu ---------- */
@@ -52,12 +99,16 @@
   font-size: 0.2rem;
   letter-spacing: 0.08rem;
   color: #b9d9c9;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
 }
 .pc-hand__top b {
   font-size: 0.23rem;
   color: #ffe2b0;
   text-align: right;
   line-height: 1.3;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.6),
+    0 0 0.16rem rgba(255, 196, 110, 0.25);
 }
 .pc-hand.mine .pc-hand__top span {
   color: #ffc46e;
@@ -67,9 +118,16 @@
   display: flex;
   justify-content: center;
   gap: 0.1rem;
+  perspective: 16rem;
+}
+.pc-cards--big {
+  perspective: 13rem;
 }
 
 .pc-card {
+  --lift: 0rem;
+  --rx: 0deg;
+  --ry: 0deg;
   position: relative;
   display: flex;
   align-items: center;
@@ -80,15 +138,53 @@
   padding: 0;
   border: 0;
   border-radius: 0.1rem;
-  background: linear-gradient(180deg, #fffdf6 0%, #efe3cf 100%);
+  background:
+    linear-gradient(145deg, #fffef9 0%, #f8eeda 46%, #e5d3b5 100%);
   color: #221019;
   font-family: inherit;
   box-shadow:
-    0 0.05rem 0.12rem rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+    0 0.05rem 0.1rem rgba(0, 0, 0, 0.44),
+    0 0.13rem 0.24rem rgba(0, 0, 0, 0.22),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+    inset 0 -0.04rem 0.07rem rgba(120, 90, 50, 0.2);
   cursor: default;
-  transition: transform 0.14s ease, box-shadow 0.14s ease;
+  transform: translateY(var(--lift)) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  animation: pcDeal 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.12) both;
 }
+.pc-cards .pc-card:nth-child(2) {
+  animation-delay: 0.04s;
+}
+.pc-cards .pc-card:nth-child(3) {
+  animation-delay: 0.08s;
+}
+.pc-cards .pc-card:nth-child(4) {
+  animation-delay: 0.12s;
+}
+.pc-cards .pc-card:nth-child(5) {
+  animation-delay: 0.16s;
+}
+
+/* kipas halus ala meja kasino */
+.pc-cards .pc-card:nth-child(1) {
+  --ry: 5deg;
+  --rx: 1.5deg;
+}
+.pc-cards .pc-card:nth-child(2) {
+  --ry: 2.5deg;
+}
+.pc-cards .pc-card:nth-child(3) {
+  --lift: -0.012rem;
+}
+.pc-cards .pc-card:nth-child(4) {
+  --ry: -2.5deg;
+}
+.pc-cards .pc-card:nth-child(5) {
+  --ry: -5deg;
+  --rx: 1.5deg;
+}
+
 .pc-card b {
   position: absolute;
   top: 0.05rem;
@@ -96,28 +192,62 @@
   font-size: 0.28rem;
   line-height: 1;
   font-weight: 800;
+  z-index: 1;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 .pc-card i {
+  position: relative;
   font-style: normal;
   font-size: 0.46rem;
   line-height: 1;
   margin-top: 0.12rem;
+  z-index: 1;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+/* kilau kaca + bayangan bawah */
+.pc-card:not(.back):not(.slot)::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background:
+    linear-gradient(128deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.24) 22%, rgba(255, 255, 255, 0) 46%),
+    radial-gradient(120% 80% at 50% 104%, rgba(120, 80, 40, 0.16), transparent 62%);
+  pointer-events: none;
+}
+/* indeks kecil di pojok kanan bawah */
+.pc-card[data-suit]::after {
+  content: attr(data-suit);
+  position: absolute;
+  right: 0.07rem;
+  bottom: 0.05rem;
+  font-size: 0.24rem;
+  line-height: 1;
+  transform: rotate(180deg);
+  opacity: 0.88;
+  z-index: 1;
 }
 .pc-card.red {
   color: #c5352f;
 }
 .pc-card.slot {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(6, 20, 14, 0.4);
   border: 1px dashed rgba(255, 255, 255, 0.2);
-  box-shadow: none;
+  box-shadow:
+    inset 0 0.05rem 0.12rem rgba(0, 0, 0, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
 .pc-card.back {
   background:
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0 0.06rem, transparent 0.06rem 0.12rem),
-    linear-gradient(160deg, #7b1b2b 0%, #3a0b14 100%);
+    radial-gradient(62% 48% at 50% 46%, rgba(255, 214, 140, 0.24), transparent 72%),
+    repeating-linear-gradient(45deg, rgba(255, 214, 140, 0.1) 0 0.045rem, transparent 0.045rem 0.09rem),
+    repeating-linear-gradient(-45deg, rgba(255, 214, 140, 0.1) 0 0.045rem, transparent 0.045rem 0.09rem),
+    linear-gradient(155deg, #8a2131 0%, #4a0d18 56%, #28060d 100%);
   box-shadow:
-    inset 0 0 0 2px rgba(255, 214, 140, 0.5),
-    0 0.05rem 0.12rem rgba(0, 0, 0, 0.5);
+    inset 0 0 0 2px rgba(255, 214, 140, 0.55),
+    inset 0 -0.05rem 0.09rem rgba(0, 0, 0, 0.45),
+    0 0.05rem 0.1rem rgba(0, 0, 0, 0.5),
+    0 0.13rem 0.24rem rgba(0, 0, 0, 0.2);
 }
 .pc-card.back::after {
   content: '';
@@ -125,6 +255,7 @@
   inset: 0.09rem;
   border-radius: 0.05rem;
   border: 1px solid rgba(255, 214, 140, 0.32);
+  box-shadow: inset 0 0 0.08rem rgba(255, 214, 140, 0.12);
 }
 button.pc-card {
   cursor: pointer;
@@ -133,11 +264,15 @@ button.pc-card:disabled {
   opacity: 1;
   cursor: default;
 }
-.pc-card.held {
-  transform: translateY(-0.08rem);
+.pc-cards .pc-card.held {
+  --lift: -0.1rem;
+  --ry: 0deg;
+  --rx: 0deg;
   box-shadow:
     0 0 0 2px #ffc46e,
-    0 0.08rem 0.2rem rgba(255, 196, 110, 0.35);
+    0 0.1rem 0.22rem rgba(255, 196, 110, 0.35),
+    0 0.2rem 0.3rem rgba(0, 0, 0, 0.3),
+    inset 0 0.03rem 0.06rem rgba(255, 255, 255, 0.7);
 }
 .pc-card.held em {
   position: absolute;
@@ -146,12 +281,35 @@ button.pc-card:disabled {
   transform: translateX(-50%);
   padding: 0.01rem 0.05rem;
   border-radius: 0.04rem;
-  background: #b5761f;
+  background: linear-gradient(180deg, #d99a3a, #a96c17);
   color: #fff8e8;
   font-style: normal;
   font-size: 0.15rem;
   letter-spacing: 0.03rem;
   white-space: nowrap;
+  z-index: 2;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.pc-card.held[data-suit]::after {
+  display: none;
+}
+button.pc-card:not(:disabled):hover {
+  --lift: -0.14rem;
+  --rx: -8deg;
+  box-shadow:
+    0 0.1rem 0.16rem rgba(0, 0, 0, 0.4),
+    0 0.22rem 0.34rem rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+    inset 0 0.04rem 0.08rem rgba(255, 255, 255, 0.75);
+}
+button.pc-card:not(:disabled):active {
+  --lift: -0.03rem;
+  --rx: -2deg;
+}
+button.pc-card.on {
+  --lift: -0.1rem;
 }
 
 .pc-cards--big .pc-card {
@@ -159,13 +317,29 @@ button.pc-card:disabled {
   height: 1.44rem;
 }
 
+/* ---------- medali VS ---------- */
 .pc-vs {
-  margin: 0.14rem 0;
-  text-align: center;
+  width: 0.72rem;
+  height: 0.72rem;
+  margin: 0.12rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.03rem;
+  border-radius: 50%;
   font-size: 0.18rem;
-  font-weight: 700;
-  letter-spacing: 0.18rem;
-  color: rgba(255, 226, 176, 0.45);
+  font-weight: 800;
+  letter-spacing: 0.03rem;
+  color: #ffe2b0;
+  background:
+    radial-gradient(circle at 34% 26%, #8a2a3c 0%, #52101e 54%, #2a060d 100%);
+  border: 1px solid rgba(255, 196, 110, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -0.04rem 0.07rem rgba(0, 0, 0, 0.55),
+    0 0.03rem 0 #8a5a12,
+    0 0.07rem 0.12rem rgba(0, 0, 0, 0.42);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
 }
 
 /* ---------- kartu meja Hold'em ---------- */
@@ -173,8 +347,14 @@ button.pc-card:disabled {
   margin: 0.16rem 0;
   padding: 0.16rem 0.1rem 0.12rem;
   border-radius: 0.18rem;
-  background: rgba(0, 0, 0, 0.24);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.07), transparent 60%),
+    rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 196, 110, 0.18);
+  box-shadow:
+    inset 0 0.05rem 0.13rem rgba(0, 0, 0, 0.45),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 1px 0 rgba(0, 0, 0, 0.35);
   text-align: center;
 }
 .pc-board > span {
@@ -183,9 +363,11 @@ button.pc-card:disabled {
   font-size: 0.18rem;
   letter-spacing: 0.12rem;
   color: #ffc46e;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 .pc-board .pc-cards {
   gap: 0.08rem;
+  perspective: 20rem;
 }
 .pc-board .pc-card {
   width: 0.8rem;
@@ -197,19 +379,33 @@ button.pc-card:disabled {
 .pc-board .pc-card i {
   font-size: 0.38rem;
 }
+.pc-board .pc-cards .pc-card:nth-child(1),
+.pc-board .pc-cards .pc-card:nth-child(5) {
+  --ry: 2deg;
+}
+.pc-board .pc-cards .pc-card:nth-child(2),
+.pc-board .pc-cards .pc-card:nth-child(4) {
+  --ry: 1deg;
+}
+.pc-board .pc-cards .pc-card:nth-child(3) {
+  --ry: 0deg;
+  --lift: 0rem;
+}
 .pc-board > em {
   display: block;
   margin-top: 0.08rem;
   font-style: normal;
   font-size: 0.18rem;
   color: #cbe3d5;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
 }
 
-/* ---------- dadu ---------- */
+/* ---------- dadu bevel ---------- */
 .pc-dice {
   display: flex;
   justify-content: center;
-  gap: 0.1rem;
+  gap: 0.11rem;
+  perspective: 9rem;
 }
 .pc-die {
   position: relative;
@@ -220,14 +416,20 @@ button.pc-card:disabled {
   height: 0.92rem;
   padding: 0.09rem;
   border: 0;
-  border-radius: 0.14rem;
-  background: linear-gradient(180deg, #fffdf6 0%, #e9dcc6 100%);
+  border-radius: 0.15rem;
+  background:
+    linear-gradient(145deg, #fffef9 0%, #f7ecd9 46%, #ddc9aa 100%);
   font-family: inherit;
   box-shadow:
-    0 0.05rem 0.12rem rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+    0 0.09rem 0.14rem rgba(0, 0, 0, 0.5),
+    0 0.24rem 0.32rem rgba(0, 0, 0, 0.22),
+    inset 0.045rem 0.045rem 0.07rem rgba(255, 255, 255, 0.92),
+    inset -0.05rem -0.06rem 0.11rem rgba(110, 78, 42, 0.32),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  transition: transform 0.14s ease, box-shadow 0.14s ease;
+  transform: rotateX(8deg) rotateY(-8deg);
+  transform-style: preserve-3d;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 .pc-die__grid {
   display: grid;
@@ -243,28 +445,43 @@ button.pc-card:disabled {
   background: transparent;
 }
 .pc-die__grid i.p {
-  background: #2a1520;
-  box-shadow: inset 0 -0.01rem 0.02rem rgba(255, 255, 255, 0.3);
+  background: radial-gradient(circle at 38% 30%, #4c2b37 0%, #241019 60%, #10040a 100%);
+  box-shadow:
+    inset 0 0.012rem 0.02rem rgba(0, 0, 0, 0.8),
+    inset 0 -0.008rem 0.012rem rgba(255, 255, 255, 0.32),
+    0 0.007rem 0.01rem rgba(255, 255, 255, 0.55);
 }
 .pc-die.on {
-  transform: translateY(-0.06rem);
+  transform: rotateX(8deg) rotateY(-8deg) translateY(-0.1rem) scale(1.04);
   box-shadow:
     0 0 0 2px #ffc46e,
-    0 0.08rem 0.2rem rgba(255, 196, 110, 0.35);
+    0 0.12rem 0.24rem rgba(255, 196, 110, 0.35),
+    0 0.26rem 0.34rem rgba(0, 0, 0, 0.28),
+    inset 0.04rem 0.04rem 0.07rem rgba(255, 255, 255, 0.9),
+    inset -0.05rem -0.06rem 0.1rem rgba(110, 78, 42, 0.3);
 }
 .pc-die.back {
   background:
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0 0.06rem, transparent 0.06rem 0.12rem),
-    linear-gradient(160deg, #7b1b2b 0%, #3a0b14 100%);
+    radial-gradient(60% 46% at 50% 44%, rgba(255, 214, 140, 0.22), transparent 72%),
+    repeating-linear-gradient(45deg, rgba(255, 214, 140, 0.1) 0 0.045rem, transparent 0.045rem 0.09rem),
+    linear-gradient(155deg, #8a2131 0%, #4a0d18 56%, #28060d 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 214, 140, 0.5),
+    inset 0 -0.05rem 0.09rem rgba(0, 0, 0, 0.45),
+    0 0.08rem 0.14rem rgba(0, 0, 0, 0.48);
   cursor: default;
 }
 .pc-die.back b {
   font-size: 0.5rem;
   color: #ffd58a;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 .pc-die:disabled {
   opacity: 1;
   cursor: default;
+}
+button.pc-die:not(:disabled):hover {
+  transform: rotateX(8deg) rotateY(-8deg) translateY(-0.08rem);
 }
 
 /* ---------- aksi ---------- */
@@ -272,25 +489,55 @@ button.pc-card:disabled {
   display: flex;
   gap: 0.16rem;
   margin-top: 0.26rem;
+  perspective: 24rem;
 }
 .pc-actions .arc-cta {
   flex: 1;
   margin: 0;
+}
+.pc-actions .arc-cta,
+.pc-overlay__btns .arc-cta {
+  box-shadow:
+    0 0.06rem 0 #8f1a12,
+    0 0.13rem 0.22rem rgba(232, 59, 47, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -0.03rem 0.06rem rgba(120, 20, 10, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+.pc-actions .arc-cta:not(:disabled):hover,
+.pc-overlay__btns .arc-cta:not(:disabled):hover {
+  filter: brightness(1.06);
+}
+.pc-actions .arc-cta:not(:disabled):active,
+.pc-overlay__btns .arc-cta:not(:disabled):active {
+  transform: translateY(0.05rem);
+  box-shadow:
+    0 0.02rem 0 #8f1a12,
+    0 0.06rem 0.11rem rgba(232, 59, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 .pc-ghost {
   flex: 0 0 32%;
   padding: 0.18rem 0.12rem;
   border-radius: 0.16rem;
   border: 1px solid rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
   color: #f4e7d6;
   font-family: inherit;
   font-size: 0.26rem;
   font-weight: 600;
   cursor: pointer;
+  box-shadow:
+    0 0.04rem 0 rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
 }
 .pc-ghost:active {
-  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(0.03rem);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 0.01rem 0 rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 .pc-mini {
   margin: 0.16rem 0 0;
@@ -298,6 +545,7 @@ button.pc-card:disabled {
   font-size: 0.19rem;
   line-height: 1.5;
   color: #a8bfb1;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
 }
 
 .pc-handline {
@@ -331,18 +579,22 @@ button.pc-card:disabled {
   gap: 0.1rem;
   padding: 0.07rem 0.1rem;
   border-radius: 0.08rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   font-size: 0.21rem;
   color: #d8c6b2;
 }
 .pc-pay > div b {
   color: #ffd58a;
   font-size: 0.22rem;
+  text-shadow: 0 0 0.14rem rgba(255, 213, 138, 0.3);
 }
 .pc-pay > div.on {
-  background: rgba(255, 196, 110, 0.16);
+  background: linear-gradient(180deg, rgba(255, 196, 110, 0.2), rgba(255, 196, 110, 0.1));
   color: #ffe2b0;
-  box-shadow: inset 0 0 0 1px rgba(255, 196, 110, 0.5);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 196, 110, 0.5),
+    0 0.03rem 0.08rem rgba(0, 0, 0, 0.3);
 }
 
 /* ---------- riwayat ---------- */
@@ -386,6 +638,7 @@ button.pc-card:disabled {
   padding: 0.5rem 0.4rem;
   background: rgba(8, 2, 4, 0.72);
   backdrop-filter: blur(4px);
+  perspective: 40rem;
   animation: pcFade 0.18s ease both;
 }
 .pc-overlay__box {
@@ -394,12 +647,17 @@ button.pc-card:disabled {
   padding: 0.5rem 0.38rem 0.38rem;
   border-radius: 0.4rem;
   text-align: center;
-  background: radial-gradient(120% 100% at 50% 0%, #3d1420 0%, #1c0710 70%);
-  border: 1px solid rgba(255, 196, 110, 0.55);
+  background:
+    radial-gradient(120% 100% at 50% 0%, #4c1727 0%, #2b0812 62%, #170410 100%);
+  border: 1px solid rgba(255, 196, 110, 0.6);
   box-shadow:
-    0 0.2rem 0.8rem rgba(0, 0, 0, 0.6),
-    inset 0 0 0 0.04rem rgba(255, 196, 110, 0.12);
-  animation: pcPop 0.26s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+    0 0 0 0.055rem rgba(18, 3, 7, 0.85),
+    0 0 0 0.075rem rgba(255, 196, 110, 0.22),
+    0 0.36rem 0.9rem rgba(0, 0, 0, 0.75),
+    0 0.06rem 0.12rem rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 226, 176, 0.25),
+    inset 0 -0.1rem 0.24rem rgba(0, 0, 0, 0.45);
+  animation: pcPop 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
 }
 .pc-overlay__box em {
   display: block;
@@ -408,6 +666,9 @@ button.pc-card:disabled {
   font-weight: 700;
   letter-spacing: 0.16rem;
   color: #ffc46e;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.7),
+    0 0 0.24rem rgba(255, 196, 110, 0.35);
 }
 .pc-overlay__box b {
   display: block;
@@ -415,13 +676,21 @@ button.pc-card:disabled {
   font-size: 0.62rem;
   line-height: 1.15;
   color: #ffe6b8;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.55),
+    0 0 0.3rem rgba(255, 214, 140, 0.25);
 }
 .pc-overlay.win b {
   color: #7ee2a8;
-  text-shadow: 0 0 0.2rem rgba(126, 226, 168, 0.35);
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.5),
+    0 0 0.24rem rgba(126, 226, 168, 0.4);
 }
 .pc-overlay.lose b {
   color: #ff8f86;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.5),
+    0 0 0.24rem rgba(255, 143, 134, 0.3);
 }
 .pc-overlay__box p {
   margin: 0.06rem 0 0;
@@ -459,10 +728,37 @@ button.pc-card:disabled {
 @keyframes pcPop {
   from {
     opacity: 0;
-    transform: translateY(0.2rem) scale(0.94);
+    transform: translateY(0.3rem) rotateX(14deg) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) rotateX(0) scale(1);
+  }
+}
+@keyframes pcDeal {
+  from {
+    opacity: 0;
+    translate: 0 -0.3rem;
+    scale: 0.92;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-cards .pc-card,
+  .pc-overlay__box,
+  .pc-overlay {
+    animation: none;
+  }
+  .pc-card,
+  .pc-die,
+  .pc-ghost,
+  .pc-actions .arc-cta,
+  .pc-overlay__btns .arc-cta {
+    transition: none;
   }
 }

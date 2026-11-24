@@ -16,19 +16,39 @@ export const CATEGORIES = [
   { key: 'pvc', label: 'PVC', cls: 'chess', icon: OSS + '/gamecategory/gamecategory_20230708020543okkf.png' },
 ]
 
-// mesin mahjong lokal (engine di src/game, dibuka lewat #/game/mw1)
-// 20 mesin mahjong (engine di src/game/ways.js, katalog mw7..mw20 di MORE).
-// Tiap mesin memakai potongan cover-nya sendiri (/assets/covers/mw1_cover.jpg .. mw20_cover.jpg).
-export const MJ_GAMES = Array.from({ length: 20 }, (_, i) => {
+// 20 mesin mahjong (engine di src/game/ways.js). Line-up dan logo mengikuti
+// project mahjong-ways-ui: 20 judul asli + emblem 3D transparan di covers/title.
+const MJ_TITLES = [
+  'MAHJONG WAYS',
+  'MAHJONG WAYS II',
+  'MAHJONG WAYS GOLD',
+  'MAHJONG WAYS R',
+  'HU WAYS',
+  'MAHJONG WAYS 2',
+  'MAHJONG WAYS BLACK',
+  'HU COIN',
+  'MAHJONG WINS 3',
+  'MAHJONG WINS GXFC',
+  'MAHJONG WAYS 2 PG',
+  'MAHJONG WAYS MINI',
+  'TONG CHEONG SOON KEE',
+  'MAHJONG WAYS CLASSIC',
+  'MAHJONG WAYS 2 JADE',
+  'HU GOLD',
+  'MAHJONG WAYS R GOLD',
+  'MAHJONG WINS 3 DARK',
+  'MAHJONG WAYS II JADE',
+  'MAHJONG WAYS GOLD 2',
+]
+export const MJ_GAMES = MJ_TITLES.map((name, i) => {
   const n = i + 1
   return {
     id: 'mw' + n,
     no: 'MW ' + String(n).padStart(2, '0'),
-    name: n === 1 ? 'Mahjong Ways' : 'Mahjong Ways ' + n,
+    name,
     vendor: 'PG',
     odds: (96.95 - i * 0.04).toFixed(2) + '%',
-    img: '/assets/covers/mw' + n + '_cover.jpg',
-    /* wordmark lebar transparan (bukan emblem kotak) biar rapi & konsisten di kartu */
+    img: '/assets/covers/mw' + n + '_cover.jpg?v=3',
     logo: '/assets/covers/title/mw' + n + '.webp',
   }
 })

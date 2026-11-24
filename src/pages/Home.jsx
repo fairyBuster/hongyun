@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IconSprite, Modal, Svg, NavBar, TabBar, Customer } from '../components/Chrome.jsx'
 import { CATEGORIES, ARCADE, BANNERS, NOTICE, MJ_GAMES, rupiah } from '../data.js'
 import { NOTIFS, markNotifRead, notifRead } from '../logic.js'
@@ -46,21 +46,11 @@ export default function Home({ route, navigate, toast, user, balance, setBalance
   const [slide, setSlide] = useState(0)
   const [modal, setModal] = useState(null)
   const [unread, setUnread] = useState(() => NOTIFS.length - notifRead().length)
-  const installRef = useRef(null)
   const [feed, setFeed] = useState(() => ({ items: localWithdrawals(user), source: 'lokal' }))
 
   useEffect(() => {
     const t = setInterval(() => setSlide((s) => (s + 1) % BANNERS.length), 4000)
     return () => clearInterval(t)
-  }, [])
-
-  useEffect(() => {
-    const onPrompt = (e) => {
-      e.preventDefault()
-      installRef.current = e
-    }
-    window.addEventListener('beforeinstallprompt', onPrompt)
-    return () => window.removeEventListener('beforeinstallprompt', onPrompt)
   }, [])
 
   /* muat data pemenang: backend dulu, lalu penarikan di perangkat */
@@ -78,17 +68,6 @@ export default function Home({ route, navigate, toast, user, balance, setBalance
     setModal('notif')
     markNotifRead(NOTIFS.map((n) => n.id))
     setUnread(0)
-  }
-
-  const install = async () => {
-    if (installRef.current) {
-      installRef.current.prompt()
-      const res = await installRef.current.userChoice
-      installRef.current = null
-      toast(res?.outcome === 'accepted' ? 'Aplikasi dipasang ke layar utama' : 'Pemasangan dibatalkan')
-      return
-    }
-    setModal('pwa')
   }
 
   const catGames = cat === 'slot' ? MJ_GAMES : ARCADE.filter((g) => g.cat === cat)
@@ -292,11 +271,6 @@ export default function Home({ route, navigate, toast, user, balance, setBalance
           )}
         </div>
 
-        <div className="btn pwa-btn btn--raised" onClick={install}>
-          <img className="icon" src="/cdn/55lottery/other/h5setting_20230712140537q813.ico" alt="" />
-          <div className="text">Tambahkan ke Desktop</div>
-        </div>
-
         <div className="float">
           <div
             className="rewardCenter float-entry"
@@ -358,20 +332,6 @@ export default function Home({ route, navigate, toast, user, balance, setBalance
             Tutup
           </button>
         </div>
-      </Modal>
-
-      <Modal open={modal === 'pwa'} title="Tambahkan ke Desktop" onClose={() => setModal(null)}>
-        <div className="hy-info">
-          <p>Browser ini belum menawarkan pemasangan otomatis. Tambahkan manual:</p>
-          <ol>
-            <li>Desktop: klik ikon “Instal” di kanan address bar.</li>
-            <li>Android: menu ⋮ → “Tambahkan ke layar utama”.</li>
-            <li>iPhone: Share → “Add to Home Screen”.</li>
-          </ol>
-        </div>
-        <button type="button" className="hy-btn" onClick={() => setModal(null)}>
-          Mengerti
-        </button>
       </Modal>
 
       <Customer toast={toast} />

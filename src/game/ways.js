@@ -9,18 +9,12 @@ export const WAYS = 1024
 // multiplier cascade per langkah (langkah 1 = win pertama)
 export const CASCADE_MULT = [1, 2, 3, 5, 8]
 
-export const GAMES = {
-  mw1: {
-    id: 'mw1',
-    name: 'Mahjong Ways',
-    sub: 'Fortune Fruits',
-    tag: 'Klasik',
-    bg: ['#0d2a1f', '#050f0b'],
-    accent: '#e8c46a',
-    accent2: '#9be3b4',
-    ink: '#f7efd8',
-    fsMult: 2,
-    scale: 0.1300,
+/* ---------------- 20 mesin Mahjong Ways ----------------
+ * Line-up, nama, dan palet diambil dari project mahjong-ways-ui (themes.js).
+ * Matematikanya tetap satu engine: 5x4, 1024 ways, paytable per tier. */
+const TIER = {
+  low: {
+    fsMult: 2, scale: 0.1300,
     pays: {
       s1: [5, 12, 40], s2: [6, 15, 50], s3: [8, 20, 70], s4: [10, 30, 100],
       s5: [12, 40, 140], s6: [15, 50, 180], s7: [20, 70, 240],
@@ -28,17 +22,8 @@ export const GAMES = {
     },
     weight: { s1: 14, s2: 13, s3: 12, s4: 11, s5: 10, s6: 9, s7: 8, s8: 6, s9: 4, wild: 1, scatter: 2 },
   },
-  mw2: {
-    id: 'mw2',
-    name: 'Mahjong Ways 2',
-    sub: 'Animal Spirits',
-    tag: 'Gacor',
-    bg: ['#2a1208', '#100602'],
-    accent: '#f0a63c',
-    accent2: '#ffd9a0',
-    ink: '#fdf1de',
-    fsMult: 3,
-    scale: 0.1153,
+  mid: {
+    fsMult: 3, scale: 0.1153,
     pays: {
       s1: [4, 10, 32], s2: [5, 12, 40], s3: [7, 18, 60], s4: [9, 26, 90],
       s5: [12, 34, 120], s6: [16, 44, 160], s7: [22, 64, 220],
@@ -46,17 +31,8 @@ export const GAMES = {
     },
     weight: { s1: 13, s2: 13, s3: 12, s4: 11, s5: 10, s6: 9, s7: 8, s8: 6, s9: 3, wild: 1, scatter: 2 },
   },
-  mw3: {
-    id: 'mw3',
-    name: 'Mahjong Ways 3',
-    sub: 'Zodiac Gold',
-    tag: 'Jackpot',
-    bg: ['#111a3a', '#05070f'],
-    accent: '#9db4ff',
-    accent2: '#e8d9a8',
-    ink: '#eef2ff',
-    fsMult: 4,
-    scale: 0.0865,
+  high: {
+    fsMult: 4, scale: 0.0865,
     pays: {
       s1: [5, 14, 45], s2: [6, 16, 55], s3: [8, 22, 75], s4: [11, 32, 110],
       s5: [14, 44, 150], s6: [18, 55, 190], s7: [25, 75, 260],
@@ -64,96 +40,67 @@ export const GAMES = {
     },
     weight: { s1: 14, s2: 13, s3: 12, s4: 11, s5: 10, s6: 9, s7: 8, s8: 5, s9: 3, wild: 1, scatter: 2 },
   },
-  mw4: {
-    id: 'mw4',
-    name: 'Mahjong Ways 4',
-    sub: 'Lucky Panda',
-    tag: 'Jade',
-    bg: ['#0c2b24', '#04120e'],
-    accent: '#7ee0a6',
-    accent2: '#d8ffe8',
-    ink: '#eefaf1',
-    fsMult: 2,
-    scale: 0.1279,
-    pays: {
-      s1: [5, 12, 40], s2: [6, 15, 50], s3: [8, 20, 70], s4: [10, 30, 100],
-      s5: [12, 40, 140], s6: [15, 50, 180], s7: [20, 70, 240],
-      s8: [30, 120, 500], s9: [52, 205, 930], wild: [105, 410, 2050],
-    },
-    weight: { s1: 14, s2: 13, s3: 12, s4: 11, s5: 10, s6: 9, s7: 8, s8: 6, s9: 4, wild: 1, scatter: 2 },
-  },
-  mw5: {
-    id: 'mw5',
-    name: 'Mahjong Ways 5',
-    sub: 'Ocean Fortune',
-    tag: 'Samudra',
-    bg: ['#0a1c34', '#03080f'],
-    accent: '#74c6f2',
-    accent2: '#c8ecff',
-    ink: '#eaf6ff',
-    fsMult: 3,
-    scale: 0.1162,
-    pays: {
-      s1: [4, 11, 36], s2: [5, 13, 45], s3: [7, 18, 62], s4: [9, 27, 92],
-      s5: [12, 36, 125], s6: [16, 46, 165], s7: [22, 66, 225],
-      s8: [34, 128, 545], s9: [58, 230, 1040], wild: [115, 470, 2350],
-    },
-    weight: { s1: 13, s2: 13, s3: 12, s4: 11, s5: 10, s6: 9, s7: 8, s8: 6, s9: 3, wild: 1, scatter: 2 },
-  },
-  mw6: {
-    id: 'mw6',
-    name: 'Mahjong Ways 6',
-    sub: 'Blossom Gold',
-    tag: 'Sakura',
-    bg: ['#2b0f1d', '#11040a'],
-    accent: '#f79ac0',
-    accent2: '#ffe0ee',
-    ink: '#fff0f6',
-    fsMult: 4,
-    scale: 0.0853,
-    pays: {
-      s1: [6, 13, 44], s2: [7, 16, 54], s3: [9, 21, 74], s4: [11, 31, 108],
-      s5: [14, 42, 148], s6: [18, 54, 188], s7: [24, 74, 255],
-      s8: [38, 145, 600], s9: [60, 250, 1150], wild: [125, 520, 2450],
-    },
-    weight: { s1: 14, s2: 13, s3: 12, s4: 11, s5: 10, s6: 9, s7: 8, s8: 5, s9: 3, wild: 1, scatter: 2 },
-  },
 }
 
-/* ---------------- katalog mesin tambahan (mw7..mw20) ----------------
- * Paytable & bobot dipinjam dari 3 mesin utama (tier volatilitas),
- * scale RTP-nya sama karena matematikanya identik. */
-const TIER = {
-  low: { pays: GAMES.mw1.pays, weight: GAMES.mw1.weight, scale: 0.1300 },
-  mid: { pays: GAMES.mw2.pays, weight: GAMES.mw2.weight, scale: 0.1153 },
-  high: { pays: GAMES.mw3.pays, weight: GAMES.mw3.weight, scale: 0.0865 },
-}
-
-// [id, sub, tag, accent, accent2, bg, fsMult, tier]
-const MORE = [
-  ['mw7', 'Butterfly Bliss', 'Kupu', '#c9a6ff', '#efe2ff', ['#1e1233', '#08040f'], 2, 'low'],
-  ['mw8', 'Fortune Cat', 'Kucing', '#ffb27a', '#ffe6cf', ['#2c1608', '#0f0602'], 3, 'mid'],
-  ['mw9', 'Lucky Puppy', 'Anjing', '#f5c96a', '#fff0c8', ['#2a1f06', '#0f0b02'], 2, 'low'],
-  ['mw10', 'Mythic Realm', 'Mitos', '#ff8f6b', '#ffd9cc', ['#2b0d0a', '#0f0403'], 4, 'high'],
-  ['mw11', 'Zodiac Wheel', 'Zodiak', '#a9b8ff', '#e2e8ff', ['#121734', '#05060f'], 3, 'mid'],
-  ['mw12', 'Jade Garden', 'Hijau', '#9fe28a', '#e4ffd8', ['#10250f', '#040c04'], 2, 'low'],
-  ['mw13', 'Retro Riches', 'Retro', '#ffd166', '#fff2c8', ['#26143a', '#0b0512'], 4, 'high'],
-  ['mw14', 'Golden Journey', 'Jelajah', '#f0b76a', '#ffe6c2', ['#2a1a08', '#0e0702'], 3, 'mid'],
-  ['mw15', 'Sweet Snack', 'Manis', '#ff9bc0', '#ffe0ee', ['#2d0f1f', '#10040a'], 2, 'low'],
-  ['mw16', 'Lucky Emoji', 'Emoji', '#ffe066', '#fff8cc', ['#241f05', '#0c0a02'], 3, 'mid'],
-  ['mw17', 'Animal Kingdom', 'Satwa', '#d9b382', '#f4e2c8', ['#26190c', '#0c0703'], 4, 'high'],
-  ['mw18', 'Beauty Gold', 'Glow', '#ff9ed8', '#ffe2f2', ['#2a0f22', '#0d040b'], 2, 'low'],
-  ['mw19', 'Mahjong Classic', 'Suit', '#e8c46a', '#fff0c8', ['#0d2a1f', '#050f0b'], 3, 'mid'],
-  ['mw20', 'Retro Neon', 'Neon', '#7df0e0', '#d6fff8', ['#0a2430', '#02080c'], 4, 'high'],
+// [nama, sub, tag, bg1, bg2, rib1, rib2, tier]
+const THEMES = [
+  ['MAHJONG WAYS', 'Merah klasik', 'Klasik', '#ef7a4a', '#6b0d12', '#3fd8b4', '#056456', 'low'],
+  ['MAHJONG WAYS II', 'Giok laut', 'Jade', '#1f9d84', '#043c37', '#ffe08f', '#8a5a12', 'mid'],
+  ['MAHJONG WAYS GOLD', 'Merah emas', 'Gold', '#8e1f2b', '#3d070c', '#f2c14e', '#8a5a12', 'high'],
+  ['MAHJONG WAYS R', 'Rose', 'Rose', '#b8467a', '#3a0b24', '#ffd4e6', '#8e2b55', 'low'],
+  ['HU WAYS', 'Hu', 'Hu', '#2a1414', '#0d0405', '#ffcf6b', '#8f4c0c', 'mid'],
+  ['MAHJONG WAYS 2', 'Hijau daun', 'Green', '#5f9e4a', '#12300c', '#f6e7b0', '#7d5f14', 'high'],
+  ['MAHJONG WAYS BLACK', 'Hitam emas', 'Black', '#2b2b2b', '#080808', '#e8bd6b', '#6d4708', 'low'],
+  ['HU COIN', 'Koin emas', 'Coin', '#c9962e', '#3d2705', '#7a1010', '#3d0607', 'mid'],
+  ['MAHJONG WINS 3', 'Merah cabai', 'Wins', '#c0392b', '#3c0407', '#ffd166', '#8a5a12', 'low'],
+  ['MAHJONG WINS GXFC', 'Kuning merah', 'GXFC', '#f2b13c', '#7a3f08', '#e5484d', '#8d1211', 'high'],
+  ['MAHJONG WAYS 2 PG', 'Giok PG', 'PG', '#1f9d84', '#06322c', '#ffe08f', '#7d4a0c', 'mid'],
+  ['MAHJONG WAYS MINI', 'Biru mini', 'Mini', '#8fb6d9', '#16283d', '#ffd9a0', '#8a5a12', 'low'],
+  ['TONG CHEONG SOON KEE', 'Kayu cokelat', 'TCSK', '#7a5a3a', '#241207', '#cde0a8', '#4e6234', 'high'],
+  ['MAHJONG WAYS CLASSIC', 'Klasik', 'Classic', '#ef7a4a', '#5c1010', '#3fd8b4', '#056456', 'mid'],
+  ['MAHJONG WAYS 2 JADE', 'Giok pucat', 'Jade', '#1f9d84', '#04241f', '#e9f2ff', '#5b7a9e', 'low'],
+  ['HU GOLD', 'Emas cerah', 'Gold', '#d9a43c', '#4a2a05', '#b8241f', '#6d0c0d', 'mid'],
+  ['MAHJONG WAYS R GOLD', 'Rose emas', 'R Gold', '#a9852f', '#2b1e06', '#d8e0b0', '#5d6b3a', 'high'],
+  ['MAHJONG WINS 3 DARK', 'Merah gelap', 'Dark', '#5f1a1a', '#1a0405', '#e8bd6b', '#5c3a08', 'low'],
+  ['MAHJONG WAYS II JADE', 'Giok tua', 'Jade', '#2f7d5c', '#06231a', '#ffe08f', '#8a5a12', 'mid'],
+  ['MAHJONG WAYS GOLD 2', 'Emas koin', 'Gold', '#c9962e', '#2e1d05', '#7a1010', '#3d0607', 'high'],
 ]
 
-for (const [id, sub, tag, accent, accent2, bg, fsMult, tier] of MORE) {
+// 10 wajah tile asli (public/assets/tiles) per mesin, urut themes.js; wild = item ke-10
+const SYMS = [
+  ['Sou2', 'Sou3', 'Sou4', 'Pin2', 'Pin4', 'Pin8', 'Man8', 'Hatsu', 'Chun', 'Haku'],
+  ['Chun', 'Hatsu', 'Man8', 'Pin9', 'Sou9', 'Pin6', 'Man5', 'Haku', 'Sou6', 'Pin3'],
+  ['Chun', 'Hatsu', 'Man8', 'Pin9', 'Sou9', 'Pin6', 'Man5', 'Haku', 'Sou6', 'Pin3'],
+  ['Pin6', 'Pin8', 'Pin9', 'Sou6', 'Sou8', 'Man5', 'Hatsu', 'Chun', 'Haku', 'Nan'],
+  ['Chun', 'Man8', 'Man5', 'Pin9', 'Pin8', 'Sou9', 'Sou7', 'Hatsu', 'Haku', 'Ton'],
+  ['Sou2', 'Sou3', 'Sou4', 'Sou5', 'Sou6', 'Sou7', 'Sou8', 'Sou9', 'Hatsu', 'Haku'],
+  ['Sou4', 'Sou6', 'Sou8', 'Pin2', 'Pin5', 'Man4', 'Chun', 'Haku', 'Ton', 'Nan'],
+  ['Man8', 'Man5', 'Man4', 'Chun', 'Hatsu', 'Pin8', 'Sou8', 'Haku', 'Nan', 'Ton'],
+  ['Man2', 'Man4', 'Man8', 'Pin4', 'Pin6', 'Sou4', 'Sou6', 'Chun', 'Hatsu', 'Haku'],
+  ['Pin2', 'Pin3', 'Pin4', 'Sou2', 'Sou3', 'Man2', 'Chun', 'Haku', 'Ton', 'Nan'],
+  ['Pin9', 'Pin8', 'Sou8', 'Sou4', 'Man4', 'Man8', 'Ton', 'Nan', 'Haku', 'Hatsu'],
+  ['Sou3', 'Sou5', 'Sou7', 'Pin3', 'Pin5', 'Man2', 'Haku', 'Hatsu', 'Chun', 'Ton'],
+  ['Sou2', 'Sou6', 'Pin5', 'Pin9', 'Man2', 'Man5', 'Ton', 'Nan', 'Haku', 'Hatsu'],
+  ['Sou2', 'Sou3', 'Sou4', 'Sou5', 'Sou6', 'Sou7', 'Sou8', 'Sou9', 'Hatsu', 'Haku'],
+  ['Pin4', 'Pin8', 'Sou5', 'Sou9', 'Man8', 'Hatsu', 'Chun', 'Haku', 'Man2', 'Pin2'],
+  ['Pin2', 'Pin3', 'Pin4', 'Pin5', 'Pin6', 'Pin8', 'Pin9', 'Man8', 'Chun', 'Hatsu'],
+  ['Haku', 'Hatsu', 'Chun', 'Pin4', 'Pin8', 'Sou4', 'Sou8', 'Man4', 'Man8', 'Ton'],
+  ['Sou9', 'Sou7', 'Pin6', 'Pin9', 'Man5', 'Man8', 'Chun', 'Hatsu', 'Haku', 'Nan'],
+  ['Man5', 'Man8', 'Pin9', 'Pin8', 'Sou5', 'Sou9', 'Chun', 'Hatsu', 'Haku', 'Nan'],
+  ['Ton', 'Nan', 'Man4', 'Man8', 'Pin3', 'Pin6', 'Sou3', 'Sou7', 'Chun', 'Haku'],
+]
+// scatter tiap mesin: naga/angin di luar pool supaya wajahnya tidak dobel
+const SCAT = ['Ton', 'Ton', 'Ton', 'Ton', 'Nan', 'Chun', 'Hatsu', 'Pin9', 'Ton', 'Hatsu', 'Chun', 'Nan', 'Chun', 'Chun', 'Ton', 'Haku', 'Nan', 'Ton', 'Ton', 'Hatsu']
+
+export const GAMES = {}
+THEMES.forEach(([name, sub, tag, bg1, bg2, rib1, rib2, tier], i) => {
+  const id = 'mw' + (i + 1)
+  const t = TIER[tier]
   GAMES[id] = {
-    id, name: `Mahjong Ways ${id.slice(2)}`, sub, tag, bg, accent, accent2,
-    ink: '#f7f2e8', fsMult, scale: TIER[tier].scale,
-    pays: TIER[tier].pays, weight: TIER[tier].weight,
+    id, name, sub, tag, bg: [bg1, bg2], accent: rib1, accent2: rib2, ink: '#f7f2e8', syms: SYMS[i], scatter: SCAT[i],
+    fsMult: t.fsMult, scale: t.scale, pays: t.pays, weight: t.weight,
   }
-}
+})
 
 // payout 1 sesi free spin (skala 1) per mesin — tools/fs_buy_sim.mjs
 const FS_EV = {

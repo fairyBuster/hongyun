@@ -19,7 +19,14 @@ const SAVE =
   })()
 const LINKED = SAVE !== 'mj.v2'
 const DAILY_MS = 20 * 3600e3
-const img = (g, s) => `/assets/${g}/${s}.png`
+/* tile asli mahjong-ways-ui: s1..s9 + wild dari pool tema, scatter khusus */
+const img = (g, s) => {
+  const t = GAMES[g]
+  if (!t || !t.syms) return `/assets/${g}/${s}.png`
+  if (s === 'scatter') return `/assets/tiles/${t.scatter}.png`
+  const i = s === 'wild' ? 9 : Number(String(s).replace('s', '')) - 1
+  return `/assets/tiles/${t.syms[i] || t.syms[0]}.png`
+}
 const multTxt = (v) => (v >= 10 ? fmt(Math.round(v)) : v.toFixed(2).replace('.', ','))
 const PACKS = [
   { amount: 100000, label: 'Starter', tag: '×1' },
@@ -277,7 +284,7 @@ export default function App() {
     let alive = true
     setLoadPct(0)
     setLoadOut(false)
-    const urls = [`/assets/ui/tileface.png`, `/assets/covers/${gid}.jpg?v=2`, ...SYMBOLS.map((s) => img(gid, s))]
+    const urls = [`/assets/ui/tileface.png`, `/assets/covers/${gid}.jpg?v=3`, ...SYMBOLS.map((s) => img(gid, s))]
     let done = 0
     const hit = () => { if (alive) done += 1 }
     urls.forEach((u) => {
@@ -923,6 +930,12 @@ export default function App() {
 
   const stageStyle = { width: fit.w, height: fit.h, transform: `translate(-50%,-50%) scale(${fit.s})` }
 
+  /* palet tiap mesin: latar kabinet + pita multiplier ikut tema aslinya */
+  const themeVars = {
+    '--mjbg1': G.bg[0], '--mjbg2': G.bg[1],
+    '--mjrib1': G.accent, '--mjrib2': G.accent2,
+  }
+
   /* ---------------- LOBBY (desain HONGYUN) ---------------- */
   if (screen === 'lobby') {
     const list = Object.values(GAMES)
@@ -1002,7 +1015,7 @@ export default function App() {
             {list.map((g) => (
               <button type="button" className="mjx-game" key={g.id} onClick={() => openGame(g.id)} aria-label={`${g.name} — ${g.sub}`}>
                 <span className="mjx-cover">
-                  <img src={`/assets/covers/${g.id}.jpg?v=2`} alt="" loading="lazy" decoding="async" />
+                  <img src={`/assets/covers/${g.id}.jpg?v=3`} alt="" loading="lazy" decoding="async" />
                   <i className="mjx-ribbon">{g.tag}</i>
                   <i className="lp-badge1024">1024</i>
                 </span>
@@ -1108,7 +1121,7 @@ export default function App() {
         <div className={`gLoad${loadOut ? ' out' : ''}`} role="status" aria-live="polite"
           onClick={() => setLoadOut(true)}>
           <div className="gLoadInner">
-            <div className="gLoadArt"><img src={`/assets/covers/${G.id}.jpg?v=2`} alt="" /></div>
+            <div className="gLoadArt"><img src={`/assets/covers/${G.id}.jpg?v=3`} alt="" /></div>
             <span className="gLoadKicker">HONGYUN · MAHJONG WAYS</span>
             <b className="gLoadName">{G.name}</b>
             <span className="gLoadSub">{G.sub} · 1024 WAYS</span>
@@ -1223,7 +1236,7 @@ export default function App() {
           {fs.left > 0 && <b className="mw2multi">×{fs.mult}</b>}
         </div>
       ) : (
-        <div className="stage mw2 mobi" style={stageStyle}>
+        <div className="stage mw2 mobi" style={{ ...stageStyle, ...themeVars }}>
           {/* awan emas + vignette: lapisan latar ala referensi mahjong-ways-ui */}
           <svg width="0" height="0" className="mw2defs" aria-hidden="true">
             <symbol id="mw2cloud" viewBox="0 0 240 160">

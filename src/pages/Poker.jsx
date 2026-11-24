@@ -103,6 +103,7 @@ function Card({ c, held, onClick, disabled }) {
       }
       onClick={onClick}
       disabled={onClick ? disabled : undefined}
+      data-suit={!slot && !back ? SUITS[c.s] : undefined}
       aria-label={slot || back ? 'Kartu tertutup' : RANK_TEXT[c.r] + ' ' + SUITS[c.s]}
     >
       {!slot && !back ? (
