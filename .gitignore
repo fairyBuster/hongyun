@@ -1,0 +1,20 @@
+# dependensi & hasil build
+node_modules/
+dist/
+.vite/
+
+# log & file OS
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+
+# env & konfigurasi lokal
+.env
+.env.*
+!.env.example
+*.local

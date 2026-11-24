@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>HONGYUN</title>
+    <script>
+      // 1rem = 1/10 lebar app (maks 400px), sama kayak build aslinya
+      function setRem() {
+        var w = Math.min(window.innerWidth, 400)
+        document.documentElement.style.setProperty('font-size', (w / 10) + 'px', 'important')
+      }
+      setRem()
+      window.addEventListener('resize', setRem)
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

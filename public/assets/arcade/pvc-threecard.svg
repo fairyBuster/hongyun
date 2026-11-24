@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="32%" r="82%">
+      <stop offset="0" stop-color="#6a1628"/>
+      <stop offset=".52" stop-color="#340a15"/>
+      <stop offset="1" stop-color="#100207"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe8ad"/>
+      <stop offset=".45" stop-color="#f7c052"/>
+      <stop offset="1" stop-color="#a96a13"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#e8dcc8"/>
+    </linearGradient>
+    <radialGradient id="felt" cx="50%" cy="36%" r="70%">
+      <stop offset="0" stop-color="#1f5a42"/>
+      <stop offset="1" stop-color="#0a231a"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffc46e" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#ffc46e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <ellipse cx="320" cy="340" rx="300" ry="260" fill="url(#glow)"/>
+  <circle cx="320" cy="316" r="252" fill="none" stroke="url(#gold)" stroke-opacity=".3" stroke-width="2" stroke-dasharray="10 14"/>
+  <ellipse cx="320" cy="440" rx="240" ry="110" fill="url(#felt)" stroke="#2b6a4d" stroke-width="6"/>
+  <ellipse cx="320" cy="440" rx="220" ry="92" fill="none" stroke="#ffc46e" stroke-opacity=".22" stroke-width="2" stroke-dasharray="8 12"/>
+  <g filter="url(#sh)">
+    <g transform="rotate(-16 320 330)">
+      <rect x="196" y="252" width="124" height="176" rx="12" fill="url(#card)"/>
+      <text x="213" y="289" font-family="Arial, sans-serif" font-size="35" font-weight="900" fill="#241016">Q</text>
+      <text x="258" y="356" text-anchor="middle" font-family="Arial, sans-serif" font-size="62" fill="#241016">&#9824;</text>
+    </g>
+    <g transform="rotate(16 320 330)">
+      <rect x="320" y="252" width="124" height="176" rx="12" fill="url(#card)"/>
+      <text x="337" y="289" font-family="Arial, sans-serif" font-size="35" font-weight="900" fill="#241016">A</text>
+      <text x="382" y="356" text-anchor="middle" font-family="Arial, sans-serif" font-size="62" fill="#241016">&#9824;</text>
+    </g>
+    <g>
+      <rect x="256" y="238" width="128" height="180" rx="14" fill="url(#card)" stroke="#d9c8ab" stroke-width="2"/>
+      <text x="274" y="277" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#241016">K</text>
+      <text x="320" y="346" text-anchor="middle" font-family="Arial, sans-serif" font-size="68" fill="#241016">&#9824;</text>
+      <rect x="270" y="368" width="100" height="28" rx="6" fill="#b5761f"/>
+      <text x="320" y="388" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#fff8e8">ANTE</text>
+    </g>
+  </g>
+  <g filter="url(#sh)">
+    <path d="M320 84 L342 126 L390 132 L356 166 L364 214 L320 192 L276 214 L284 166 L250 132 L298 126 Z" fill="url(#gold)" stroke="#7c4a0b" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="320" cy="148" r="7" fill="#7c0f1e"/>
+  </g>
+  <g filter="url(#sh)">
+    <ellipse cx="520" cy="470" rx="58" ry="20" fill="#8f1424"/>
+    <ellipse cx="520" cy="458" rx="58" ry="20" fill="#b72a33"/>
+    <ellipse cx="520" cy="446" rx="58" ry="20" fill="#8f1424"/>
+    <ellipse cx="520" cy="434" rx="58" ry="20" fill="url(#gold)" stroke="#7c4a0b" stroke-width="2"/>
+    <text x="520" y="441" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#5a2c05">BONUS</text>
+  </g>
+  <g fill="#ffe8ad" opacity=".85">
+    <circle cx="96" cy="204" r="5"/>
+    <circle cx="138" cy="138" r="3"/>
+    <circle cx="552" cy="264" r="4"/>
+    <circle cx="82" cy="368" r="3"/>
+  </g>
+</svg>

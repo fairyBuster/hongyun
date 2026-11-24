@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="32%" r="82%">
+      <stop offset="0" stop-color="#6a1628"/>
+      <stop offset=".52" stop-color="#340a15"/>
+      <stop offset="1" stop-color="#100207"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe8ad"/>
+      <stop offset=".45" stop-color="#f7c052"/>
+      <stop offset="1" stop-color="#a96a13"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#e8dcc8"/>
+    </linearGradient>
+    <radialGradient id="felt" cx="50%" cy="36%" r="70%">
+      <stop offset="0" stop-color="#1f5a42"/>
+      <stop offset="1" stop-color="#0a231a"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffc46e" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#ffc46e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <ellipse cx="320" cy="330" rx="300" ry="260" fill="url(#glow)"/>
+  <circle cx="320" cy="316" r="252" fill="none" stroke="url(#gold)" stroke-opacity=".3" stroke-width="2" stroke-dasharray="10 14"/>
+  <ellipse cx="320" cy="372" rx="286" ry="196" fill="url(#felt)" stroke="#2b6a4d" stroke-width="6"/>
+  <ellipse cx="320" cy="372" rx="264" ry="176" fill="none" stroke="#ffc46e" stroke-opacity=".2" stroke-width="2" stroke-dasharray="8 12"/>
+  <g filter="url(#sh)">
+    <g>
+      <rect x="176" y="212" width="54" height="78" rx="6" fill="url(#card)"/>
+      <text x="186" y="236" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#c5352f">10</text>
+      <text x="203" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#c5352f">&#9829;</text>
+    </g>
+    <g>
+      <rect x="236" y="212" width="54" height="78" rx="6" fill="url(#card)"/>
+      <text x="246" y="236" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#241016">J</text>
+      <text x="263" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#241016">&#9824;</text>
+    </g>
+    <g>
+      <rect x="296" y="212" width="54" height="78" rx="6" fill="url(#card)"/>
+      <text x="306" y="236" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#241016">Q</text>
+      <text x="323" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#241016">&#9824;</text>
+    </g>
+    <g>
+      <rect x="356" y="212" width="54" height="78" rx="6" fill="url(#card)"/>
+      <text x="366" y="236" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#241016">K</text>
+      <text x="383" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#241016">&#9824;</text>
+    </g>
+    <g>
+      <rect x="416" y="212" width="54" height="78" rx="6" fill="url(#card)"/>
+      <text x="426" y="236" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#241016">A</text>
+      <text x="443" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#241016">&#9824;</text>
+    </g>
+    <g transform="rotate(-7 284 382)">
+      <rect x="224" y="296" width="120" height="172" rx="12" fill="url(#card)" stroke="#d9c8ab" stroke-width="2"/>
+      <text x="241" y="332" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#241016">A</text>
+      <text x="284" y="404" text-anchor="middle" font-family="Arial, sans-serif" font-size="62" fill="#241016">&#9824;</text>
+    </g>
+    <g transform="rotate(7 356 382)">
+      <rect x="296" y="296" width="120" height="172" rx="12" fill="url(#card)" stroke="#d9c8ab" stroke-width="2"/>
+      <text x="313" y="332" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#241016">K</text>
+      <text x="356" y="404" text-anchor="middle" font-family="Arial, sans-serif" font-size="62" fill="#241016">&#9824;</text>
+    </g>
+  </g>
+  <g filter="url(#sh)">
+    <ellipse cx="112" cy="502" rx="56" ry="18" fill="#8f1424"/>
+    <ellipse cx="112" cy="490" rx="56" ry="18" fill="#b72a33"/>
+    <ellipse cx="112" cy="478" rx="56" ry="18" fill="#8f1424"/>
+    <ellipse cx="112" cy="466" rx="56" ry="18" fill="url(#gold)" stroke="#7c4a0b" stroke-width="2"/>
+  </g>
+  <g filter="url(#sh)">
+    <ellipse cx="528" cy="502" rx="56" ry="18" fill="#8f1424"/>
+    <ellipse cx="528" cy="490" rx="56" ry="18" fill="#b72a33"/>
+    <ellipse cx="528" cy="478" rx="56" ry="18" fill="#8f1424"/>
+    <ellipse cx="528" cy="466" rx="56" ry="18" fill="url(#gold)" stroke="#7c4a0b" stroke-width="2"/>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="228" y="104" width="184" height="52" rx="26" fill="#1a060c" stroke="url(#gold)" stroke-width="3"/>
+    <text x="320" y="139" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="26" font-weight="900" fill="#ffd58a">POT DUEL</text>
+  </g>
+  <g fill="#ffe8ad" opacity=".85">
+    <circle cx="96" cy="216" r="5"/>
+    <circle cx="138" cy="146" r="3"/>
+    <circle cx="552" cy="236" r="4"/>
+    <circle cx="84" cy="382" r="3"/>
+  </g>
+</svg>

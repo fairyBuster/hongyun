@@ -1,0 +1,14 @@
+/* Penyesuaian kecil setelah style.css inti. */
+
+.stage.mw2.mobi .mw2back {
+  width: auto;
+  flex: 0 0 auto;
+  padding: 0 9px 0 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffe0a3;
+}

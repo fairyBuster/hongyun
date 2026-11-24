@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="32%" r="82%">
+      <stop offset="0" stop-color="#6a1628"/>
+      <stop offset=".52" stop-color="#340a15"/>
+      <stop offset="1" stop-color="#100207"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe8ad"/>
+      <stop offset=".45" stop-color="#f7c052"/>
+      <stop offset="1" stop-color="#a96a13"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#e8dcc8"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#ffd58a"/>
+      <stop offset=".55" stop-color="#e8843c"/>
+      <stop offset="1" stop-color="#8f1d2b" stop-opacity=".1"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b1020"/>
+      <stop offset="1" stop-color="#12030a"/>
+    </linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="300" r="252" fill="none" stroke="url(#gold)" stroke-opacity=".3" stroke-width="2" stroke-dasharray="10 14"/>
+  <circle cx="320" cy="268" r="150" fill="url(#sun)"/>
+  <circle cx="320" cy="268" r="150" fill="none" stroke="#ffc46e" stroke-opacity=".35" stroke-width="3"/>
+  <path d="M70 402 Q170 372 270 402 T470 402 T670 402 L670 520 L70 520 Z" fill="url(#sea)"/>
+  <path d="M58 452 Q158 424 258 452 T458 452 T658 452" fill="none" stroke="#ffc46e" stroke-opacity=".3" stroke-width="4"/>
+  <path d="M74 486 Q174 458 274 486 T474 486 T674 486" fill="none" stroke="#ffc46e" stroke-opacity=".18" stroke-width="4"/>
+  <g filter="url(#sh)">
+    <g transform="rotate(-32 320 352)">
+      <rect x="204" y="280" width="102" height="146" rx="11" fill="url(#card)"/>
+      <text x="219" y="313" font-family="Arial, sans-serif" font-size="29" font-weight="900" fill="#c5352f">10</text>
+      <text x="255" y="372" text-anchor="middle" font-family="Arial, sans-serif" font-size="50" fill="#c5352f">&#9829;</text>
+    </g>
+    <g transform="rotate(-16 320 352)">
+      <rect x="226" y="268" width="102" height="146" rx="11" fill="url(#card)"/>
+      <text x="241" y="301" font-family="Arial, sans-serif" font-size="29" font-weight="900" fill="#c5352f">J</text>
+      <text x="277" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="50" fill="#c5352f">&#9829;</text>
+    </g>
+    <g>
+      <rect x="258" y="256" width="106" height="150" rx="12" fill="url(#card)" stroke="#d9c8ab" stroke-width="2"/>
+      <text x="274" y="290" font-family="Arial, sans-serif" font-size="31" font-weight="900" fill="#c5352f">Q</text>
+      <text x="311" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" fill="#c5352f">&#9829;</text>
+      <rect x="271" y="374" width="80" height="24" rx="5" fill="#b5761f"/>
+      <text x="311" y="391" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#fff8e8">STUD</text>
+    </g>
+    <g transform="rotate(16 320 352)">
+      <rect x="312" y="268" width="102" height="146" rx="11" fill="url(#card)"/>
+      <text x="327" y="301" font-family="Arial, sans-serif" font-size="29" font-weight="900" fill="#c5352f">K</text>
+      <text x="363" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="50" fill="#c5352f">&#9829;</text>
+    </g>
+    <g transform="rotate(32 320 352)">
+      <rect x="334" y="280" width="102" height="146" rx="11" fill="url(#card)"/>
+      <text x="349" y="313" font-family="Arial, sans-serif" font-size="29" font-weight="900" fill="#c5352f">A</text>
+      <text x="385" y="372" text-anchor="middle" font-family="Arial, sans-serif" font-size="50" fill="#c5352f">&#9829;</text>
+    </g>
+  </g>
+  <g filter="url(#sh)">
+    <ellipse cx="118" cy="508" rx="62" ry="20" fill="#8f1424"/>
+    <ellipse cx="118" cy="496" rx="62" ry="20" fill="#b72a33"/>
+    <ellipse cx="118" cy="484" rx="62" ry="20" fill="#8f1424"/>
+    <ellipse cx="118" cy="472" rx="62" ry="20" fill="url(#gold)" stroke="#7c4a0b" stroke-width="2"/>
+    <text x="118" y="479" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#5a2c05">CALL 2&#215;</text>
+  </g>
+  <g fill="#ffe8ad" opacity=".85">
+    <circle cx="98" cy="196" r="5"/>
+    <circle cx="142" cy="132" r="3"/>
+    <circle cx="552" cy="210" r="4"/>
+    <circle cx="86" cy="352" r="3"/>
+  </g>
+</svg>

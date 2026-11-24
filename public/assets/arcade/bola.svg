@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <defs>
+    <radialGradient id="bbg" cx="50%" cy="26%" r="90%">
+      <stop offset="0" stop-color="#12324a"/>
+      <stop offset=".5" stop-color="#081726"/>
+      <stop offset="1" stop-color="#03070d"/>
+    </radialGradient>
+    <linearGradient id="bpitch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e7a45"/>
+      <stop offset="1" stop-color="#0a3a20"/>
+    </linearGradient>
+    <linearGradient id="bbeam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff6d8" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#fff6d8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="bball" cx="36%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".6" stop-color="#f2f2f0"/>
+      <stop offset="1" stop-color="#b9b9b6"/>
+    </radialGradient>
+    <radialGradient id="bglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffd58a" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#ffd58a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bgold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe8ad"/>
+      <stop offset=".5" stop-color="#f7c052"/>
+      <stop offset="1" stop-color="#a96a13"/>
+    </linearGradient>
+    <clipPath id="bclip">
+      <circle cx="320" cy="430" r="102"/>
+    </clipPath>
+    <filter id="bblur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="bshadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+
+  <rect width="640" height="640" fill="url(#bbg)"/>
+  <ellipse cx="320" cy="380" rx="300" ry="250" fill="url(#bglow)"/>
+
+  <g opacity=".25">
+    <polygon points="90,0 150,0 340,470 120,470" fill="url(#bbeam)"/>
+    <polygon points="490,0 550,0 520,470 300,470" fill="url(#bbeam)"/>
+  </g>
+
+  <g>
+    <circle cx="86" cy="34" r="17" fill="#f7e7b8" opacity=".9"/>
+    <circle cx="60" cy="34" r="17" fill="#f7e7b8" opacity=".9"/>
+    <circle cx="554" cy="34" r="17" fill="#f7e7b8" opacity=".9"/>
+    <circle cx="580" cy="34" r="17" fill="#f7e7b8" opacity=".9"/>
+    <rect x="52" y="42" width="76" height="10" rx="4" fill="#2c3540"/>
+    <rect x="512" y="42" width="76" height="10" rx="4" fill="#2c3540"/>
+  </g>
+
+  <g fill="#9fb4c6" opacity=".5">
+    <circle cx="96" cy="200" r="3"/>
+    <circle cx="150" cy="176" r="2.4"/>
+    <circle cx="212" cy="206" r="2"/>
+    <circle cx="428" cy="198" r="2.6"/>
+    <circle cx="482" cy="176" r="3"/>
+    <circle cx="540" cy="210" r="2.2"/>
+    <circle cx="360" cy="162" r="2"/>
+    <circle cx="272" cy="152" r="2.4"/>
+  </g>
+
+  <g fill="#ffd58a" opacity=".8">
+    <path d="M120 300 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4z"/>
+    <path d="M520 280 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z"/>
+    <path d="M176 120 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" opacity=".65"/>
+    <path d="M470 126 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" opacity=".6"/>
+  </g>
+
+  <g>
+    <path d="M0 416 L640 416 L640 640 L0 640 Z" fill="url(#bpitch)"/>
+    <path d="M0 416 L640 416" stroke="#0c4626" stroke-width="6"/>
+    <g fill="none" stroke="rgba(255,255,255,.34)" stroke-width="3">
+      <path d="M40 438 L600 438 L640 640 L0 640 Z"/>
+      <path d="M320 438 L320 640"/>
+      <ellipse cx="320" cy="540" rx="86" ry="42"/>
+      <ellipse cx="320" cy="640" rx="150" ry="66"/>
+    </g>
+    <g stroke="rgba(255,255,255,.2)" stroke-width="2" opacity=".7">
+      <path d="M40 478 L600 478"/>
+      <path d="M20 522 L620 522"/>
+      <path d="M0 574 L640 574"/>
+    </g>
+  </g>
+
+  <g fill="#0c3a22" opacity=".55" filter="url(#bblur)">
+    <ellipse cx="320" cy="584" rx="156" ry="26"/>
+  </g>
+
+  <g filter="url(#bshadow)">
+    <circle cx="320" cy="430" r="102" fill="url(#bball)"/>
+    <g clip-path="url(#bclip)">
+      <g fill="#1d1f26">
+        <polygon points="320,392 350,414 339,450 301,450 290,414"/>
+        <polygon points="250,362 282,346 310,368 300,400 268,402"/>
+        <polygon points="390,362 358,346 330,368 340,400 372,402"/>
+        <polygon points="214,432 244,414 272,434 262,466 232,466"/>
+        <polygon points="426,432 396,414 368,434 378,466 408,466"/>
+        <polygon points="276,500 304,482 336,482 364,500 350,532 290,532"/>
+      </g>
+      <g fill="none" stroke="#8d939c" stroke-width="4" opacity=".9">
+        <path d="M290 414 L268 402"/>
+        <path d="M350 414 L372 402"/>
+        <path d="M301 450 L290 482"/>
+        <path d="M339 450 L350 482"/>
+        <path d="M244 414 L262 434"/>
+        <path d="M396 414 L378 434"/>
+        <path d="M232 466 L276 500"/>
+        <path d="M408 466 L364 500"/>
+      </g>
+      <ellipse cx="286" cy="384" rx="34" ry="20" fill="#fff" opacity=".5" transform="rotate(-26 286 384)"/>
+    </g>
+    <circle cx="320" cy="430" r="102" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="3"/>
+  </g>
+
+  <g>
+    <circle cx="132" cy="556" r="10" fill="url(#bgold)"/>
+    <circle cx="508" cy="556" r="10" fill="url(#bgold)"/>
+    <circle cx="188" cy="600" r="7" fill="url(#bgold)"/>
+    <circle cx="452" cy="600" r="7" fill="url(#bgold)"/>
+  </g>
+
+  <rect width="640" height="640" fill="none" stroke="rgba(255,224,170,.16)" stroke-width="10"/>
+</svg>

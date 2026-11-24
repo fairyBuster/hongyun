@@ -1,0 +1,468 @@
+/* ---------- meja PVC: kartu, dadu, overlay hasil ---------- */
+.pc-page {
+  padding-bottom: 2rem;
+}
+
+.pc-table {
+  position: relative;
+  padding: 0.32rem 0.26rem 0.3rem;
+  border-radius: 0.4rem;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(90% 70% at 50% 45%, #1f5a42 0%, #133b2c 55%, #0a231a 100%);
+  border: 1px solid rgba(255, 196, 110, 0.42);
+  box-shadow:
+    inset 0 0 0 0.05rem rgba(255, 196, 110, 0.12),
+    inset 0 0 0.8rem rgba(0, 0, 0, 0.55),
+    0 0.14rem 0.4rem rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+.pc-table::before {
+  content: '';
+  position: absolute;
+  inset: 0.12rem;
+  border-radius: 0.3rem;
+  border: 1px dashed rgba(255, 226, 176, 0.16);
+  pointer-events: none;
+}
+.pc-table__label {
+  text-align: center;
+  font-size: 0.19rem;
+  letter-spacing: 0.14rem;
+  color: #ffc46e;
+  margin-bottom: 0.14rem;
+}
+
+/* ---------- baris kartu ---------- */
+.pc-hand {
+  position: relative;
+  padding: 0.04rem 0.02rem;
+}
+.pc-hand + .pc-hand {
+  margin-top: 0.02rem;
+}
+.pc-hand__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.16rem;
+  margin-bottom: 0.12rem;
+}
+.pc-hand__top span {
+  font-size: 0.2rem;
+  letter-spacing: 0.08rem;
+  color: #b9d9c9;
+}
+.pc-hand__top b {
+  font-size: 0.23rem;
+  color: #ffe2b0;
+  text-align: right;
+  line-height: 1.3;
+}
+.pc-hand.mine .pc-hand__top span {
+  color: #ffc46e;
+}
+
+.pc-cards {
+  display: flex;
+  justify-content: center;
+  gap: 0.1rem;
+}
+
+.pc-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 0.95rem;
+  height: 1.34rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.1rem;
+  background: linear-gradient(180deg, #fffdf6 0%, #efe3cf 100%);
+  color: #221019;
+  font-family: inherit;
+  box-shadow:
+    0 0.05rem 0.12rem rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  cursor: default;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.pc-card b {
+  position: absolute;
+  top: 0.05rem;
+  left: 0.08rem;
+  font-size: 0.28rem;
+  line-height: 1;
+  font-weight: 800;
+}
+.pc-card i {
+  font-style: normal;
+  font-size: 0.46rem;
+  line-height: 1;
+  margin-top: 0.12rem;
+}
+.pc-card.red {
+  color: #c5352f;
+}
+.pc-card.slot {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+.pc-card.back {
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0 0.06rem, transparent 0.06rem 0.12rem),
+    linear-gradient(160deg, #7b1b2b 0%, #3a0b14 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 214, 140, 0.5),
+    0 0.05rem 0.12rem rgba(0, 0, 0, 0.5);
+}
+.pc-card.back::after {
+  content: '';
+  position: absolute;
+  inset: 0.09rem;
+  border-radius: 0.05rem;
+  border: 1px solid rgba(255, 214, 140, 0.32);
+}
+button.pc-card {
+  cursor: pointer;
+}
+button.pc-card:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.pc-card.held {
+  transform: translateY(-0.08rem);
+  box-shadow:
+    0 0 0 2px #ffc46e,
+    0 0.08rem 0.2rem rgba(255, 196, 110, 0.35);
+}
+.pc-card.held em {
+  position: absolute;
+  left: 50%;
+  bottom: 0.02rem;
+  transform: translateX(-50%);
+  padding: 0.01rem 0.05rem;
+  border-radius: 0.04rem;
+  background: #b5761f;
+  color: #fff8e8;
+  font-style: normal;
+  font-size: 0.15rem;
+  letter-spacing: 0.03rem;
+  white-space: nowrap;
+}
+
+.pc-cards--big .pc-card {
+  width: 1.02rem;
+  height: 1.44rem;
+}
+
+.pc-vs {
+  margin: 0.14rem 0;
+  text-align: center;
+  font-size: 0.18rem;
+  font-weight: 700;
+  letter-spacing: 0.18rem;
+  color: rgba(255, 226, 176, 0.45);
+}
+
+/* ---------- kartu meja Hold'em ---------- */
+.pc-board {
+  margin: 0.16rem 0;
+  padding: 0.16rem 0.1rem 0.12rem;
+  border-radius: 0.18rem;
+  background: rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+.pc-board > span {
+  display: block;
+  margin-bottom: 0.08rem;
+  font-size: 0.18rem;
+  letter-spacing: 0.12rem;
+  color: #ffc46e;
+}
+.pc-board .pc-cards {
+  gap: 0.08rem;
+}
+.pc-board .pc-card {
+  width: 0.8rem;
+  height: 1.12rem;
+}
+.pc-board .pc-card b {
+  font-size: 0.24rem;
+}
+.pc-board .pc-card i {
+  font-size: 0.38rem;
+}
+.pc-board > em {
+  display: block;
+  margin-top: 0.08rem;
+  font-style: normal;
+  font-size: 0.18rem;
+  color: #cbe3d5;
+}
+
+/* ---------- dadu ---------- */
+.pc-dice {
+  display: flex;
+  justify-content: center;
+  gap: 0.1rem;
+}
+.pc-die {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.92rem;
+  height: 0.92rem;
+  padding: 0.09rem;
+  border: 0;
+  border-radius: 0.14rem;
+  background: linear-gradient(180deg, #fffdf6 0%, #e9dcc6 100%);
+  font-family: inherit;
+  box-shadow:
+    0 0.05rem 0.12rem rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.pc-die__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.03rem;
+  width: 100%;
+  height: 100%;
+}
+.pc-die__grid i {
+  display: block;
+  border-radius: 50%;
+  background: transparent;
+}
+.pc-die__grid i.p {
+  background: #2a1520;
+  box-shadow: inset 0 -0.01rem 0.02rem rgba(255, 255, 255, 0.3);
+}
+.pc-die.on {
+  transform: translateY(-0.06rem);
+  box-shadow:
+    0 0 0 2px #ffc46e,
+    0 0.08rem 0.2rem rgba(255, 196, 110, 0.35);
+}
+.pc-die.back {
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0 0.06rem, transparent 0.06rem 0.12rem),
+    linear-gradient(160deg, #7b1b2b 0%, #3a0b14 100%);
+  cursor: default;
+}
+.pc-die.back b {
+  font-size: 0.5rem;
+  color: #ffd58a;
+}
+.pc-die:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+/* ---------- aksi ---------- */
+.pc-actions {
+  display: flex;
+  gap: 0.16rem;
+  margin-top: 0.26rem;
+}
+.pc-actions .arc-cta {
+  flex: 1;
+  margin: 0;
+}
+.pc-ghost {
+  flex: 0 0 32%;
+  padding: 0.18rem 0.12rem;
+  border-radius: 0.16rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f4e7d6;
+  font-family: inherit;
+  font-size: 0.26rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.pc-ghost:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+.pc-mini {
+  margin: 0.16rem 0 0;
+  text-align: center;
+  font-size: 0.19rem;
+  line-height: 1.5;
+  color: #a8bfb1;
+}
+
+.pc-handline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.14rem;
+  margin-top: 0.16rem;
+}
+.pc-handline span {
+  font-size: 0.2rem;
+  letter-spacing: 0.06rem;
+  color: #b9d9c9;
+}
+.pc-handline b {
+  font-size: 0.23rem;
+  color: #ffe2b0;
+  text-align: right;
+}
+
+/* ---------- tabel bayaran ---------- */
+.pc-pay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.06rem 0.14rem;
+}
+.pc-pay > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.1rem;
+  padding: 0.07rem 0.1rem;
+  border-radius: 0.08rem;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.21rem;
+  color: #d8c6b2;
+}
+.pc-pay > div b {
+  color: #ffd58a;
+  font-size: 0.22rem;
+}
+.pc-pay > div.on {
+  background: rgba(255, 196, 110, 0.16);
+  color: #ffe2b0;
+  box-shadow: inset 0 0 0 1px rgba(255, 196, 110, 0.5);
+}
+
+/* ---------- riwayat ---------- */
+.arc-hist__mid em {
+  display: block;
+  margin-top: 0.01rem;
+  font-style: normal;
+  font-size: 0.18rem;
+  color: #9fb4a8;
+}
+.arc-hist__row b.flat {
+  color: #cbbba4;
+}
+
+/* ---------- panduan ---------- */
+.pc-guide ul {
+  margin: 0;
+  padding-left: 0.32rem;
+}
+.pc-guide li {
+  margin: 0.05rem 0;
+  font-size: 0.21rem;
+  line-height: 1.55;
+  color: #d8c6b2;
+}
+.pc-guide li::marker {
+  color: #ffc46e;
+}
+.pc-guide .arc-note {
+  margin-top: 0.18rem;
+}
+
+/* ---------- overlay hasil ---------- */
+.pc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.4rem;
+  background: rgba(8, 2, 4, 0.72);
+  backdrop-filter: blur(4px);
+  animation: pcFade 0.18s ease both;
+}
+.pc-overlay__box {
+  width: 100%;
+  max-width: 6.6rem;
+  padding: 0.5rem 0.38rem 0.38rem;
+  border-radius: 0.4rem;
+  text-align: center;
+  background: radial-gradient(120% 100% at 50% 0%, #3d1420 0%, #1c0710 70%);
+  border: 1px solid rgba(255, 196, 110, 0.55);
+  box-shadow:
+    0 0.2rem 0.8rem rgba(0, 0, 0, 0.6),
+    inset 0 0 0 0.04rem rgba(255, 196, 110, 0.12);
+  animation: pcPop 0.26s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+.pc-overlay__box em {
+  display: block;
+  font-style: normal;
+  font-size: 0.28rem;
+  font-weight: 700;
+  letter-spacing: 0.16rem;
+  color: #ffc46e;
+}
+.pc-overlay__box b {
+  display: block;
+  margin: 0.12rem 0 0.08rem;
+  font-size: 0.62rem;
+  line-height: 1.15;
+  color: #ffe6b8;
+}
+.pc-overlay.win b {
+  color: #7ee2a8;
+  text-shadow: 0 0 0.2rem rgba(126, 226, 168, 0.35);
+}
+.pc-overlay.lose b {
+  color: #ff8f86;
+}
+.pc-overlay__box p {
+  margin: 0.06rem 0 0;
+  font-size: 0.23rem;
+  line-height: 1.5;
+  color: #e6d5c2;
+}
+.pc-overlay__box small {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.2rem;
+  line-height: 1.5;
+  color: #a8bfb1;
+}
+.pc-overlay__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+  margin-top: 0.3rem;
+}
+.pc-overlay__btns .arc-cta,
+.pc-overlay__btns .pc-ghost {
+  flex: none;
+  width: 100%;
+}
+
+@keyframes pcFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pcPop {
+  from {
+    opacity: 0;
+    transform: translateY(0.2rem) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

@@ -1,0 +1,1606 @@
+/* override + tambahan kecil di atas base.css (css asli 55five) */
+* { -webkit-tap-highlight-color: transparent; }
+html,
+body { background: #9195a3; }
+#app { background: #f7f7f7; }
+
+.headLogo {
+  background-image: url(/cdn/55lottery/other/h5setting_20230712140535knh2.png);
+}
+
+.navbar__content-left .van-icon-arrow-left { font-size: 0.48rem; cursor: pointer; }
+.navbar__content-left img { cursor: pointer; }
+
+/* chip bahasa di header daftar/login */
+.lang-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  color: #fff;
+  font-size: 0.32rem;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 0.3rem;
+  padding: 0.07rem 0.2rem 0.07rem 0.1rem;
+  cursor: pointer;
+}
+.lang-chip img { width: 0.5rem; height: 0.5rem; border-radius: 50%; }
+.navbar__content-right .lang-chip img,
+.navbar__content-right .lang-chip span { transform: none; }
+
+/* ikon mata di field sandi */
+.passwordInput__container-input { position: relative; }
+.passwordInput__container-input img.eye {
+  position: absolute;
+  right: 0.28rem;
+  top: 50%;
+  width: 0.52rem;
+  height: 0.52rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0.55;
+}
+
+/* pesan error form */
+.reg-err {
+  margin: 0.2rem 0.1rem 0;
+  color: #f2413b;
+  font-size: 0.3rem;
+}
+
+/* carousel banner */
+.my-swipe { overflow: hidden; }
+.my-swipe .swiper-wrapper { display: flex; height: 100%; }
+.my-swipe .swiper-slide { flex: 0 0 100%; height: 100%; }
+.my-swipe .swiper-slide img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+
+/* banner lokal 1200x628: tinggi kotak ikut rasio gambar, jadi tidak ada letterbox dan teks pinggir tidak kepotong */
+#app .swiper_box .my-swipe { height: auto; aspect-ratio: 1200 / 628; }
+
+/* kartu game lain (grid 2 kolom) */
+.other_game .other_img img { display: block; }
+
+/* toast */
+.van-toast.van-toast--text { z-index: 4000; }
+
+/* halaman game */
+.game-launch { min-height: 100vh; background: #14161c; }
+.game-launch__stage {
+  position: relative;
+  min-height: calc(100vh - 1.225rem);
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-launch__stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 18, 0.72);
+}
+.game-launch__loading,
+.game-launch__panel {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0.5rem;
+}
+.game-launch__loading p { font-size: 0.36rem; margin-top: 0.3rem; opacity: 0.85; }
+.game-launch__panel h3 { font-size: 0.52rem; margin-bottom: 0.2rem; }
+.game-launch__panel p { font-size: 0.34rem; color: #ffd9a0; margin-bottom: 0.12rem; }
+.game-launch__panel p.dim { color: rgba(255, 255, 255, 0.6); font-size: 0.3rem; margin: 0.3rem 0 0.5rem; }
+.game-launch__panel button {
+  display: block;
+  width: 6.4rem;
+  margin: 0 auto 0.25rem;
+  height: 0.9rem;
+  border: 0;
+  border-radius: 0.45rem;
+  background: #f2413b;
+  color: #fff;
+  font-size: 0.36rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.game-launch__panel button.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* input di page deposit/withdraw */
+.Recharge__content-paymoney__money-input input,
+.explain .input .inp {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 0.36rem;
+  color: #333;
+}
+.explain .input .inp { height: 100%; }
+.empty__container p { color: #999; font-size: 0.32rem; }
+
+/* ===== mesin mahjong (dibuka di iframe /game.html) ===== */
+.game-launch--mj { min-height: 100vh; background: #000; }
+.game-launch--mj .game-launch__frame {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 1.22667rem);
+  border: 0;
+  background: #000;
+}
+
+/* ===== rapihkan teks banner & logo brand 3D ===== */
+
+/* banner beranda: gambar 702x260 vs kotak 4.26667rem — pakai contain biar teks pinggir tidak kepotong */
+.swiper_box .my-swipe img { object-fit: contain; object-position: center; }
+
+/* pengumuman: satu baris berjalan (sebelumnya 3 baris kepotong di jendela 2 baris) */
+.noticeBar__container-body { height: .98667rem; }
+.noticeBar__container-body-text.noticeTicker {
+  display: flex;
+  width: max-content;
+  max-height: none;
+  line-height: .98667rem;
+  white-space: nowrap;
+  animation: noticeTicker 22s linear infinite;
+  will-change: transform;
+}
+.noticeTicker > span { padding-right: 2.4rem; }
+@keyframes noticeTicker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* kartu promo halaman aktivitas: judul tidak terpotong (line-height lama 12.48px < font 15.6px) */
+.activitySection__container .box-title {
+  font-size: .34rem;
+  line-height: 1.3;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* bagan pendapatan: line-height jangan lebih kecil dari font-size */
+.dailyProfitRank .title { line-height: 1.35; }
+
+/* ---- logo brand 3D HONGYUN ---- */
+/* logo brand SVG: gradasi emas + garis tepi coklat + bayangan 3D */
+.brand-logo3d {
+  display: block;
+  width: 3.84rem;
+  height: .92rem;
+  overflow: visible;
+  filter: drop-shadow(0 .055rem .05rem rgba(30, 8, 0, .5));
+}
+
+/* daftar pemenang: tampilkan semua baris (wrapper asli 8.66667rem memotong baris terakhir) */
+.luckyWinners__container-wrapper { height: auto; }
+
+/* badge jenis game di daftar pemenang */
+.luckyWinners__container-wrapper__item-winType {
+  position: relative;
+  justify-content: center;
+  border-radius: .21333rem;
+  background: linear-gradient(135deg, #ff7a18, #d90f0f);
+  box-shadow: 0 .05333rem .16rem rgba(160, 10, 10, .35);
+}
+.luckyWinners__container-wrapper__item-winType > span {
+  position: static;
+  left: auto;
+  top: auto;
+  width: auto;
+  font-size: .24rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: #fff;
+}
+
+/* halaman login: kode negara +62 & label "Ingat kata sandi" jangan ikut 1rem root */
+.phoneInput__container-input .dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .4rem;
+  line-height: 1;
+  color: var(--text_color_L1);
+}
+.phoneInput__container-input .dropdown i {
+  font-size: .3rem;
+  margin-left: .13333rem;
+}
+.signIn__container-rememberRow .van-checkbox__label {
+  margin-left: .13333rem;
+  font-size: .32rem;
+  line-height: .56rem;
+  color: var(--text_color_L2);
+}
+.signIn__container-rememberRow .van-checkbox__icon {
+  width: .56rem;
+  height: .56rem;
+}
+
+/* toast: beri posisi fixed supaya muncul di tengah layar (semua menu akun/promo pakai ini) */
+.van-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 70vw;
+  min-width: 1.2rem;
+  padding: .32rem .4rem;
+  border-radius: .16rem;
+  background: rgba(0, 0, 0, .78);
+  color: #fff;
+  font-size: .32rem;
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+  word-break: break-word;
+}
+
+/* teks kecil di panel activity jangan mewarisi 1rem */
+.activity-panel-header .header-item > span {
+  font-size: .32rem;
+  line-height: 1.25;
+  margin-top: .08rem;
+  color: inherit;
+}
+.activity-panel-content .content-title > p {
+  font-size: .32rem;
+  line-height: 1.45;
+  color: var(--text_color_L2);
+}
+
+/* ikon tab ke-3 (Promosi) masih mewarisi aturan roda di base.css:
+   terangkat .4rem, ukuran lebih besar, dan fill putih. Samakan dengan tab lain. */
+.tabbar__container-item:nth-of-type(3) svg {
+  position: relative;
+  top: 0;
+  width: .5776rem;
+  height: .59387rem;
+  z-index: auto;
+}
+.tabbar__container-item:nth-of-type(3) svg path {
+  fill: none !important;
+}
+
+/* tabbar tanpa roda: bar putih polos (background asli punya lekukan roda) */
+.tabbar__container {
+  background: #fff;
+  box-shadow: 0 -0.05rem 0.24rem rgba(31, 35, 70, 0.08);
+}
+
+/* in-game: sisakan ruang untuk footer supaya tidak menutup kabinet game */
+.game-launch--mj {
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(1.73333rem + env(safe-area-inset-bottom, 0px));
+}
+.game-launch--mj .game-launch__frame {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+.game-launch { padding-bottom: calc(1.73333rem + env(safe-area-inset-bottom, 0px)); }
+.game-launch .game-launch__stage { min-height: calc(100dvh - 1.225rem - 1.73333rem); }
+
+/* ============================================================
+   Komponen fungsional: sheet/modal, transaksi, chat CS, klaim harian,
+   dan form (dipakai di seluruh halaman app)
+   ============================================================ */
+body.hy-modal-open {
+  overflow: hidden;
+}
+
+.hy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(14, 12, 8, 0.56);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  animation: hyFade 0.18s ease-out;
+}
+
+.hy-sheet {
+  width: 100%;
+  max-width: 480px;
+  max-height: 88dvh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 0.34rem 0.34rem 0 0;
+  box-shadow: 0 -0.2rem 0.8rem rgba(0, 0, 0, 0.18);
+  animation: hyUp 0.24s ease-out;
+  color: #2c2418;
+}
+
+.hy-sheet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.36rem 0.4rem 0.24rem;
+  border-bottom: 1px solid #f0ece2;
+  flex: none;
+}
+
+.hy-sheet__head h3 {
+  margin: 0;
+  font-size: 0.4rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.hy-sheet__close {
+  width: 0.64rem;
+  height: 0.64rem;
+  border: 0;
+  border-radius: 50%;
+  background: #f4f1e9;
+  color: #7a6a50;
+  font-size: 0.46rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hy-sheet__body {
+  padding: 0.32rem 0.4rem 0.4rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  font-size: 0.32rem;
+  line-height: 1.5;
+}
+
+.hy-sheet__foot {
+  padding: 0.24rem 0.4rem calc(0.36rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid #f0ece2;
+  flex: none;
+}
+
+.hy-sheet--chat .hy-sheet__body {
+  padding-bottom: calc(0.32rem + env(safe-area-inset-bottom, 0px));
+}
+
+@keyframes hyFade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes hyUp {
+  from {
+    transform: translateY(12%);
+    opacity: 0.4;
+  }
+}
+
+@media (min-width: 768px) {
+  .hy-overlay {
+    align-items: center;
+  }
+  .hy-sheet {
+    border-radius: 0.34rem;
+    max-height: 84vh;
+  }
+  .hy-sheet__body {
+    padding-bottom: 0.4rem;
+  }
+}
+
+/* ---------- tombol & form ---------- */
+.hy-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.28rem;
+  padding: 0.26rem 0.3rem;
+  border: 0;
+  border-radius: 0.18rem;
+  background: linear-gradient(180deg, #ffd75c, #f0a800);
+  color: #4a2b00;
+  font-size: 0.34rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 0.06rem 0 rgba(160, 105, 0, 0.35);
+}
+
+.hy-btn:disabled {
+  background: #ece7db;
+  color: #a29680;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.hy-btn--ghost {
+  background: #f5f2ea;
+  color: #6c5b3d;
+  box-shadow: none;
+}
+
+.hy-row-actions {
+  display: flex;
+  gap: 0.2rem;
+  align-items: stretch;
+}
+
+.hy-row-actions .hy-btn {
+  flex: 1;
+  margin-top: 0.24rem;
+}
+
+.hy-input {
+  display: block;
+  width: 100%;
+  margin-top: 0.16rem;
+  padding: 0.24rem 0.26rem;
+  border: 1px solid #e3ddcf;
+  border-radius: 0.16rem;
+  background: #fdfcf8;
+  font-size: 0.34rem;
+  color: #2c2418;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.hy-input:focus {
+  border-color: #e7b32c;
+  background: #fff;
+}
+
+.hy-textarea {
+  min-height: 2.6rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.hy-label {
+  display: block;
+  margin-bottom: 0.14rem;
+  font-size: 0.26rem;
+  font-weight: 700;
+  color: #8c7c62;
+}
+
+.hy-lead {
+  margin: 0.1rem 0 0.24rem;
+  color: #5c5142;
+}
+
+.hy-note {
+  margin: 0.24rem 0 0;
+  font-size: 0.26rem;
+  color: #9b8f7b;
+  line-height: 1.45;
+}
+
+.hy-alert {
+  margin-top: 0.24rem;
+  padding: 0.2rem 0.24rem;
+  border-radius: 0.14rem;
+  font-size: 0.28rem;
+  line-height: 1.4;
+}
+
+.hy-alert.ok {
+  background: #e9f8ee;
+  color: #197a3c;
+}
+.hy-alert.err {
+  background: #fdecec;
+  color: #b3261e;
+}
+
+.hy-link {
+  color: #c98a00;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.hy-minmax {
+  margin-top: 0.16rem;
+  font-size: 0.24rem;
+  color: #a3957f;
+}
+
+/* ---------- daftar transaksi ---------- */
+.hy-txlist {
+  margin-top: 0.2rem;
+  border: 1px solid #f0ebdf;
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+.hy-tx {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem;
+  padding: 0.24rem 0.26rem;
+  border-bottom: 1px solid #f4efe4;
+  background: #fff;
+}
+
+.hy-tx:last-child {
+  border-bottom: 0;
+}
+
+.hy-tx__left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+}
+
+.hy-tx__left b {
+  font-size: 0.3rem;
+  font-weight: 700;
+  color: #332a1c;
+}
+
+.hy-tx__left span {
+  font-size: 0.24rem;
+  color: #9a8e79;
+}
+
+.hy-tx__right {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.08rem;
+}
+
+.hy-tx__right b {
+  font-size: 0.3rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.hy-tx__right b.in {
+  color: #0c8a45;
+}
+.hy-tx__right b.out {
+  color: #c23325;
+}
+
+.hy-chip {
+  display: inline-block;
+  padding: 0.04rem 0.14rem;
+  border-radius: 0.5rem;
+  font-size: 0.22rem;
+  font-style: normal;
+  background: #f2efe7;
+  color: #7d7160;
+  white-space: nowrap;
+}
+
+.hy-chip--success {
+  background: #e6f7ec;
+  color: #17803d;
+}
+.hy-chip--pending {
+  background: #fff4d9;
+  color: #a87300;
+}
+.hy-chip--process {
+  background: #e8f1ff;
+  color: #2269c4;
+}
+.hy-chip--cancel {
+  background: #f6ecec;
+  color: #a33a32;
+}
+
+.hy-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12rem;
+  padding: 0.5rem 0.3rem;
+  color: #a29680;
+  text-align: center;
+  font-size: 0.28rem;
+}
+
+.hy-empty p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hy-empty--page {
+  margin: 0.3rem;
+  border: 1px dashed #e3dccb;
+  border-radius: 0.24rem;
+  background: #fffdf7;
+  padding: 0.8rem 0.5rem;
+}
+
+.hy-empty--page b {
+  display: block;
+  color: #6b5a3c;
+  font-size: 0.34rem;
+}
+
+/* ---------- statistik & info ---------- */
+.hy-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.16rem;
+  margin-top: 0.2rem;
+}
+
+.hy-stats > div {
+  background: #faf7ef;
+  border: 1px solid #f0e8d6;
+  border-radius: 0.16rem;
+  padding: 0.2rem 0.22rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.hy-stats span {
+  font-size: 0.24rem;
+  color: #9a8d77;
+}
+
+.hy-stats b {
+  font-size: 0.32rem;
+  color: #b57600;
+  word-break: break-word;
+}
+
+.hy-info p {
+  margin: 0 0 0.2rem;
+}
+
+.hy-info ol,
+.hy-steps {
+  margin: 0.1rem 0 0.2rem;
+  padding-left: 0.5rem;
+  line-height: 1.6;
+}
+
+.hy-info li,
+.hy-steps li {
+  margin-bottom: 0.08rem;
+}
+
+.hy-list {
+  margin: 0.1rem 0;
+  padding-left: 0.46rem;
+  line-height: 1.55;
+}
+
+.hy-list li {
+  margin-bottom: 0.14rem;
+}
+
+/* ---------- notifikasi ---------- */
+.hy-notifs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.hy-notif {
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.22rem;
+  border-radius: 0.18rem;
+  background: #faf8f2;
+  border: 1px solid #f0e9d9;
+}
+
+.hy-notif__dot {
+  flex: none;
+  width: 0.14rem;
+  height: 0.14rem;
+  margin-top: 0.12rem;
+  border-radius: 50%;
+  background: #e3a500;
+}
+
+.hy-notif b {
+  display: block;
+  font-size: 0.3rem;
+  color: #3a2f1d;
+}
+
+.hy-notif p {
+  margin: 0.06rem 0;
+  font-size: 0.27rem;
+  color: #6d6250;
+  line-height: 1.45;
+}
+
+.hy-notif span {
+  font-size: 0.23rem;
+  color: #a99e8a;
+}
+
+/* ---------- chat ---------- */
+.hy-chat {
+  height: 9.4rem;
+  max-height: 52dvh;
+  overflow-y: auto;
+  background: #f7f6f2;
+  border-radius: 0.2rem;
+  padding: 0.24rem 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hy-chat__row {
+  display: flex;
+  gap: 0.14rem;
+  align-items: flex-end;
+}
+
+.hy-chat__row.me {
+  flex-direction: row-reverse;
+}
+
+.hy-chat__avatar {
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffd75c, #e6a200);
+  color: #5a3500;
+  font-size: 0.22rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hy-chat__bubble {
+  max-width: 78%;
+  padding: 0.2rem 0.24rem;
+  border-radius: 0.18rem;
+  background: #fff;
+  border: 1px solid #ece7dc;
+  font-size: 0.29rem;
+  line-height: 1.45;
+  color: #3a3226;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hy-chat__row.me .hy-chat__bubble {
+  background: #fff3cf;
+  border-color: #f3dfa6;
+  color: #4a3410;
+}
+
+.hy-chat__quick {
+  display: flex;
+  gap: 0.14rem;
+  overflow-x: auto;
+  padding: 0.18rem 0 0.06rem;
+}
+
+.hy-chat__quick button {
+  flex: none;
+  border: 1px solid #eadfc6;
+  background: #fffdf6;
+  color: #8a6a1c;
+  border-radius: 0.5rem;
+  padding: 0.1rem 0.22rem;
+  font-size: 0.25rem;
+  cursor: pointer;
+}
+
+.hy-chat__send {
+  display: flex;
+  gap: 0.14rem;
+  margin-top: 0.16rem;
+}
+
+.hy-chat__send input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #e4ddcf;
+  border-radius: 0.16rem;
+  padding: 0.2rem 0.22rem;
+  font-size: 0.3rem;
+  background: #fdfcf8;
+  outline: none;
+}
+
+.hy-chat__send button {
+  flex: none;
+  border: 0;
+  border-radius: 0.16rem;
+  background: linear-gradient(180deg, #ffd75c, #f0a800);
+  color: #4a2b00;
+  font-weight: 800;
+  font-size: 0.3rem;
+  padding: 0 0.34rem;
+  cursor: pointer;
+}
+
+/* ---------- home ---------- */
+.hy-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.16rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.1rem;
+  z-index: 3;
+}
+
+.hy-dots i {
+  width: 0.12rem;
+  height: 0.12rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: width 0.2s;
+}
+
+.hy-dots i.on {
+  width: 0.34rem;
+  background: #ffd23f;
+}
+
+.hy-cat-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.32rem 0.32rem 0.06rem;
+}
+
+.hy-cat-head span {
+  font-size: 0.38rem;
+  font-weight: 800;
+  color: #3a2f1d;
+}
+
+.hy-cat-head em {
+  font-style: normal;
+  font-size: 0.26rem;
+  color: #9c8e77;
+}
+
+/* ---------- activity ---------- */
+.hy-quick-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.18rem;
+  margin: 0.24rem 0.3rem 0;
+}
+
+.hy-quick {
+  border: 1px solid #f0e4c4;
+  border-radius: 0.2rem;
+  background: linear-gradient(180deg, #fffdf5, #fff6df);
+  padding: 0.22rem 0.24rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+}
+
+.hy-quick b {
+  font-size: 0.3rem;
+  color: #7c4a00;
+}
+
+.hy-quick span {
+  font-size: 0.24rem;
+  color: #9a8b70;
+}
+
+.hy-days {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.12rem;
+  margin: 0.2rem 0;
+}
+
+.hy-day {
+  border: 1px solid #efe6d2;
+  background: #faf7ef;
+  border-radius: 0.14rem;
+  padding: 0.16rem 0.08rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+}
+
+.hy-day span {
+  font-size: 0.23rem;
+  color: #9a8c74;
+}
+
+.hy-day b {
+  font-size: 0.25rem;
+  color: #6b4d12;
+}
+
+.hy-day i {
+  font-style: normal;
+  font-size: 0.22rem;
+  color: #b09a6d;
+  min-height: 0.3rem;
+}
+
+.hy-day.done {
+  background: #eef9f1;
+  border-color: #cfe9d8;
+}
+.hy-day.done i {
+  color: #1d8a43;
+  font-weight: 800;
+}
+
+.hy-day.current {
+  border-color: #e6b21f;
+  box-shadow: 0 0 0 1px #e6b21f inset;
+}
+
+.hy-jackpot {
+  border-radius: 0.2rem;
+  padding: 0.36rem 0.3rem;
+  background: radial-gradient(circle at 50% 0%, #ffefc2, #ffd968 60%, #f0a800);
+  color: #5b2c00;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.hy-jackpot span {
+  font-size: 0.25rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.hy-jackpot b {
+  font-size: 0.48rem;
+  font-weight: 900;
+}
+
+.hy-promo-img {
+  width: 100%;
+  border-radius: 0.18rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.hy-promo-title {
+  margin: 0 0 0.08rem;
+  font-size: 0.36rem;
+}
+
+/* ---------- account ---------- */
+.hy-avatars {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+  padding: 0.2rem 0;
+}
+
+.hy-avatar {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  padding: 0.06rem;
+  border: 2px solid #eee7d8;
+  background: #fff;
+  cursor: pointer;
+}
+
+.hy-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.hy-avatar.active {
+  border-color: #e1a900;
+  box-shadow: 0 0 0 0.06rem #fff4d1;
+}
+
+.hy-vip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.28rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(135deg, #fff8e2, #ffe9ae);
+  border: 1px solid #f0d68d;
+}
+
+.hy-vip b {
+  font-size: 0.44rem;
+  color: #8a4b00;
+}
+
+.hy-vip span {
+  font-size: 0.26rem;
+  color: #8b7550;
+}
+
+.hy-progress {
+  height: 0.16rem;
+  border-radius: 0.2rem;
+  background: rgba(120, 80, 0, 0.12);
+  overflow: hidden;
+}
+
+.hy-progress i {
+  display: block;
+  height: 100%;
+  border-radius: 0.2rem;
+  background: linear-gradient(90deg, #ffcf4d, #e79a00);
+  transition: width 0.3s;
+}
+
+.hy-tier {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.04rem 0.2rem;
+  padding: 0.2rem;
+  border: 1px solid #efe9dc;
+  border-radius: 0.16rem;
+  margin-bottom: 0.14rem;
+  background: #fff;
+}
+
+.hy-tier b {
+  font-size: 0.3rem;
+}
+
+.hy-tier span {
+  font-size: 0.25rem;
+  color: #9b8c74;
+  text-align: right;
+}
+
+.hy-tier em {
+  grid-column: span 2;
+  font-style: normal;
+  font-size: 0.25rem;
+  color: #7a6c56;
+}
+
+.hy-tier.active {
+  border-color: #e8b724;
+  background: #fffdf4;
+}
+
+.hy-wallet {
+  border-radius: 0.2rem;
+  padding: 0.32rem;
+  background: linear-gradient(135deg, #2b2118, #4a3825);
+  color: #ffe9b5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.hy-wallet span {
+  font-size: 0.26rem;
+  opacity: 0.8;
+}
+
+.hy-wallet b {
+  font-size: 0.48rem;
+  font-weight: 900;
+}
+
+.hy-tourneys {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+.hy-tourney {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2rem;
+  padding: 0.22rem;
+  border: 1px solid #efe8d8;
+  border-radius: 0.18rem;
+  background: #fffdf8;
+}
+
+.hy-tourney > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+  min-width: 0;
+}
+
+.hy-tourney b {
+  font-size: 0.3rem;
+}
+
+.hy-tourney span {
+  font-size: 0.24rem;
+  color: #9a8c75;
+}
+
+.hy-tourney__right {
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.hy-tourney__right button {
+  border: 0;
+  background: #fff2ca;
+  color: #8a5a00;
+  font-weight: 700;
+  font-size: 0.24rem;
+  border-radius: 0.5rem;
+  padding: 0.08rem 0.22rem;
+  cursor: pointer;
+}
+
+.hy-code {
+  margin: 0.24rem 0;
+  padding: 0.3rem;
+  border-radius: 0.18rem;
+  border: 1px dashed #e2c168;
+  background: #fffbee;
+  text-align: center;
+  font-size: 0.42rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #8a5200;
+}
+
+.hy-choice {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem;
+  padding: 0.26rem 0.24rem;
+  margin-bottom: 0.14rem;
+  border-radius: 0.16rem;
+  border: 1px solid #ede6d8;
+  background: #fff;
+  font-size: 0.32rem;
+  color: #4a3f30;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hy-choice i {
+  font-style: normal;
+  font-size: 0.26rem;
+  color: #b39b6c;
+}
+
+.hy-choice.active {
+  border-color: #e3b32a;
+  background: #fffdf3;
+}
+
+.hy-choice:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.hy-toggles {
+  display: flex;
+  flex-direction: column;
+}
+
+.hy-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+  padding: 0.24rem 0;
+  border-bottom: 1px solid #f2ecdf;
+}
+
+.hy-toggle-row:last-child {
+  border-bottom: 0;
+}
+
+.hy-toggle-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.04rem;
+}
+
+.hy-toggle-row b {
+  font-size: 0.31rem;
+  color: #3d3324;
+}
+
+.hy-toggle-row span {
+  font-size: 0.25rem;
+  color: #9c8e78;
+}
+
+.hy-switch {
+  flex: none;
+  width: 0.9rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0;
+  background: #e6e1d6;
+  padding: 0.05rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hy-switch i {
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0.02rem 0.06rem rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s;
+}
+
+.hy-switch.on {
+  background: #e8ac00;
+}
+
+.hy-switch.on i {
+  transform: translateX(0.4rem);
+}
+
+.hy-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+.hy-channels button {
+  text-align: left;
+  border: 1px solid #efe8d8;
+  border-radius: 0.16rem;
+  background: #fffdf8;
+  padding: 0.22rem 0.24rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.04rem;
+}
+
+.hy-channels b {
+  font-size: 0.31rem;
+  color: #4a3c24;
+}
+
+.hy-channels span {
+  font-size: 0.25rem;
+  color: #9a8c75;
+}
+
+.hy-about {
+  display: flex;
+  flex-direction: column;
+  gap: 0.06rem;
+  padding: 0.3rem;
+  border-radius: 0.18rem;
+  background: linear-gradient(135deg, #2a2119, #4a3826);
+  color: #ffe4a3;
+  margin-bottom: 0.2rem;
+}
+
+.hy-about b {
+  font-size: 0.44rem;
+  letter-spacing: 0.04em;
+}
+
+.hy-about span {
+  font-size: 0.24rem;
+  opacity: 0.8;
+}
+
+/* ---------- deposit & withdraw ---------- */
+.hy-pay {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.24rem;
+  border-radius: 0.18rem;
+  background: #faf7ef;
+  border: 1px solid #efe7d5;
+}
+
+.hy-pay > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2rem;
+  font-size: 0.29rem;
+}
+
+.hy-pay span {
+  color: #988a72;
+}
+
+.hy-payinfo {
+  margin-top: 0.24rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+  align-items: stretch;
+}
+
+.hy-payinfo > span {
+  font-size: 0.25rem;
+  color: #998b73;
+}
+
+.hy-payinfo > b {
+  font-size: 0.42rem;
+  letter-spacing: 0.04em;
+  color: #4c3a20;
+  word-break: break-all;
+}
+
+.hy-payinfo p {
+  margin: 0;
+  font-size: 0.27rem;
+  color: #7c6f5b;
+  line-height: 1.45;
+}
+
+.hy-qr {
+  border: 1px dashed #d9cba8;
+  border-radius: 0.18rem;
+  padding: 0.3rem;
+  background: #fffdf6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  text-align: center;
+}
+
+.hy-qr b {
+  font-size: 0.4rem;
+  letter-spacing: 0.1em;
+  color: #3f3322;
+}
+
+.hy-qr i {
+  font-style: normal;
+  font-size: 0.24rem;
+  color: #998a70;
+}
+
+.hy-qr em {
+  font-style: normal;
+  font-size: 0.36rem;
+  font-weight: 800;
+  color: #b57a00;
+}
+
+.hy-banks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.14rem;
+}
+
+.hy-bank {
+  border: 1px solid #e8e0cf;
+  background: #fffdf8;
+  border-radius: 0.14rem;
+  padding: 0.14rem 0.24rem;
+  font-size: 0.28rem;
+  color: #5f5140;
+  cursor: pointer;
+}
+
+.hy-bank.active {
+  border-color: #dfa900;
+  background: #fff8e3;
+  color: #7c4a00;
+  font-weight: 800;
+}
+
+/* input password: ikon mata */
+.passwordInput__container-input .eye.on,
+.login__container .eye.on {
+  opacity: 0.35;
+}
+
+/* input email di Login: tanpa dropdown kode negara, jadi tidak perlu
+   digeser 2.66667rem seperti field nomor ponsel (lihat base.css) */
+.phoneInput__container-input--email input {
+  width: 100%;
+  margin-left: 0;
+}
+html:lang(ar) .phoneInput__container-input--email input {
+  margin: 0;
+}
+
+/* label nama pada kartu game arcade di Beranda */
+.popular .list .item {
+  position: relative;
+  overflow: hidden;
+}
+.popular .list .item .arcade-tag {
+  position: absolute;
+  left: 0.08rem;
+  top: 0.08rem;
+  padding: 0.025rem 0.12rem;
+  border-radius: 0.08rem;
+  border: 1px solid rgba(255, 205, 130, 0.5);
+  background: rgba(24, 6, 10, 0.72);
+  color: #ffe3b3;
+  font-size: 0.26rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.02rem;
+}
+
+/* header halaman kategori game */
+.hy-cat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem;
+  margin: 0.1rem 0 0.12rem;
+  color: #14181f;
+}
+.hy-cat-head b {
+  font-size: 0.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.hy-cat-head em {
+  flex: none;
+  padding: 0.03rem 0.16rem;
+  border: 1px solid #e2e5ea;
+  border-radius: 0.22rem;
+  background: #f2f4f7;
+  color: #5b6472;
+  font-style: normal;
+  font-size: 0.24rem;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+.hy-cat-sub {
+  margin: 0 0 0.26rem;
+  color: #6b7280;
+  font-size: 0.26rem;
+  line-height: 1.45;
+}
+
+/* bingkai gambar: jadi acuan posisi plat nomor mesin */
+.hot_container .popular .list .item {
+  min-height: 0;
+}
+.hot_container .popular .list .item .gamePic {
+  position: relative;
+  width: 2.66667rem;
+  height: 2.66667rem;
+  line-height: 0;
+  border-radius: 0.21333rem;
+  overflow: hidden;
+}
+.hot_container .popular .list .item .gamePic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  image-rendering: auto;
+}
+/* tile game: ganti gradient salmon bawaan situs dengan permukaan putih bersih */
+.hot_container .popular .list .item {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #e6eaf0;
+}
+.hot_container .popular .list .item img {
+  background: #f7f8fa;
+}
+/* bar peluang: label singkat, isi merah lembut, teks tetap terbaca */
+.hot_container .popular .list .win-odds {
+  background: #eef1f5;
+  color: #3f4754;
+}
+.hot_container .popular .list .win-odds .win-p {
+  background: #ffb4b4;
+}
+.hot_container .popular .list .win-odds span {
+  font-size: 0.28rem;
+  line-height: 0.48rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hot_container .popular .list .win-odds span + span {
+  padding-right: 0.13333rem;
+  font-weight: 700;
+  color: #1f2733;
+  text-align: right;
+}
+
+/* papan pemenang hanya berisi data penarikan */
+.hy-winners-empty,
+.hy-profit-empty {
+  margin: 0 0 .4rem;
+  color: #6b7280;
+}
+.dailyProfitRank.is-compact .title {
+  margin-bottom: .16rem;
+}
+
+/* nominal besar: baris pemenang tumbuh sendiri, nominal tidak terpotong */
+.luckyWinners__container-wrapper__item {
+  height: auto;
+  min-height: 1.6rem;
+}
+.luckyWinners__container-wrapper__item-img {
+  display: flex;
+}
+.luckyWinners__container-wrapper__item-img img {
+  display: block;
+}
+.luckyWinners__container-wrapper__item-winAmount h1 {
+  margin-top: 0;
+  line-height: 1.15;
+}
+
+/* wordmark tiap mesin mahjong di kartu depan: lebar, transparan, tinggi seragam */
+.popular .list .item .gamePic img.game-logo {
+  position: absolute;
+  left: 50%;
+  bottom: 0.1rem;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  max-width: 88%;
+  max-height: 34%;
+  transform: translateX(-50%);
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+  background: none;
+  filter: drop-shadow(0 0.02rem 0.03rem rgba(0, 0, 0, 0.9)) drop-shadow(0 0.04rem 0.12rem rgba(0, 0, 0, 0.55));
+}
+/* scrim tipis di bawah cover biar wordmark putih tetap terbaca di art terang */
+.popular .list .item .gamePic:has(> img.game-logo)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46%;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(10, 6, 4, 0) 0%, rgba(10, 6, 4, 0.42) 62%, rgba(10, 6, 4, 0.62) 100%);
+  pointer-events: none;
+}
+.popular .list .item .arcade-tag {
+  z-index: 3;
+}

@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">
+  <defs>
+    <radialGradient id="tbg" cx="50%" cy="36%" r="80%">
+      <stop offset="0" stop-color="#6a1628"/>
+      <stop offset=".5" stop-color="#350a16"/>
+      <stop offset="1" stop-color="#120308"/>
+    </radialGradient>
+    <linearGradient id="tgold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe8ad"/>
+      <stop offset=".45" stop-color="#f7c052"/>
+      <stop offset="1" stop-color="#a96a13"/>
+    </linearGradient>
+    <radialGradient id="tballR" cx="34%" cy="28%" r="80%">
+      <stop offset="0" stop-color="#ffb3a6"/>
+      <stop offset=".42" stop-color="#e33a33"/>
+      <stop offset="1" stop-color="#7c1014"/>
+    </radialGradient>
+    <radialGradient id="tballG" cx="34%" cy="28%" r="80%">
+      <stop offset="0" stop-color="#ffe9a3"/>
+      <stop offset=".45" stop-color="#f0a92c"/>
+      <stop offset="1" stop-color="#8f5008"/>
+    </radialGradient>
+    <radialGradient id="tballE" cx="34%" cy="28%" r="80%">
+      <stop offset="0" stop-color="#a8f0c9"/>
+      <stop offset=".45" stop-color="#1f9d63"/>
+      <stop offset="1" stop-color="#0a4a2c"/>
+    </radialGradient>
+    <radialGradient id="tballB" cx="34%" cy="28%" r="80%">
+      <stop offset="0" stop-color="#a9cdff"/>
+      <stop offset=".45" stop-color="#2f67d8"/>
+      <stop offset="1" stop-color="#122b6e"/>
+    </radialGradient>
+    <radialGradient id="tglowR" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffb347" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#ffb347" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="tglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="tshadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+
+  <rect width="640" height="640" fill="url(#tbg)"/>
+  <ellipse cx="320" cy="330" rx="250" ry="210" fill="url(#tglowR)"/>
+
+  <g fill="none" stroke="#f7c052" opacity=".12">
+    <circle cx="320" cy="312" r="212" stroke-width="2"/>
+    <circle cx="320" cy="312" r="250" stroke-width="1"/>
+    <circle cx="320" cy="312" r="288" stroke-width="1"/>
+  </g>
+
+  <g fill="none" stroke="#f7c052" stroke-width="3" opacity=".2" stroke-linecap="round">
+    <path d="M52 168 q30 -34 60 0 q30 -34 60 0"/>
+    <path d="M468 150 q30 -34 60 0 q30 -34 60 0"/>
+    <path d="M80 468 q30 -34 60 0 q30 -34 60 0"/>
+    <path d="M444 500 q30 -34 60 0 q30 -34 60 0"/>
+  </g>
+
+  <g fill="#ffe8ad" opacity=".85">
+    <path d="M108 292 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4z"/>
+    <path d="M536 250 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4z"/>
+    <path d="M470 470 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z"/>
+    <path d="M176 118 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" opacity=".7"/>
+  </g>
+
+  <circle cx="320" cy="316" r="178" fill="none" stroke="url(#tgold)" stroke-width="6" opacity=".6" filter="url(#tglow)"/>
+
+  <ellipse cx="320" cy="462" rx="214" ry="46" fill="url(#tgold)" opacity=".85"/>
+  <ellipse cx="320" cy="452" rx="198" ry="38" fill="#2a0912"/>
+  <ellipse cx="320" cy="448" rx="188" ry="31" fill="#43111d"/>
+
+  <g filter="url(#tshadow)">
+    <g>
+      <circle cx="176" cy="368" r="54" fill="url(#tballR)"/>
+      <circle cx="176" cy="368" r="35" fill="#fff7e8"/>
+      <text x="176" y="369" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Arial, sans-serif" font-size="42" font-weight="900" fill="#3a0b10">2</text>
+      <ellipse cx="157" cy="346" rx="17" ry="9" fill="#fff" opacity=".5" transform="rotate(-28 157 346)"/>
+    </g>
+    <g>
+      <circle cx="272" cy="330" r="54" fill="url(#tballG)"/>
+      <circle cx="272" cy="330" r="35" fill="#fff7e8"/>
+      <text x="272" y="331" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Arial, sans-serif" font-size="42" font-weight="900" fill="#3a0b10">0</text>
+      <ellipse cx="253" cy="308" rx="17" ry="9" fill="#fff" opacity=".5" transform="rotate(-28 253 308)"/>
+    </g>
+    <g>
+      <circle cx="368" cy="330" r="54" fill="url(#tballE)"/>
+      <circle cx="368" cy="330" r="35" fill="#fff7e8"/>
+      <text x="368" y="331" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Arial, sans-serif" font-size="42" font-weight="900" fill="#0a2a1a">2</text>
+      <ellipse cx="349" cy="308" rx="17" ry="9" fill="#fff" opacity=".5" transform="rotate(-28 349 308)"/>
+    </g>
+    <g>
+      <circle cx="464" cy="368" r="54" fill="url(#tballB)"/>
+      <circle cx="464" cy="368" r="35" fill="#fff7e8"/>
+      <text x="464" y="369" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Arial, sans-serif" font-size="42" font-weight="900" fill="#0d1c40">6</text>
+      <ellipse cx="445" cy="346" rx="17" ry="9" fill="#fff" opacity=".5" transform="rotate(-28 445 346)"/>
+    </g>
+  </g>
+
+  <g fill="url(#tgold)" stroke="#7c4c0c" stroke-width="2" opacity=".95">
+    <circle cx="150" cy="480" r="20"/>
+    <circle cx="196" cy="492" r="15"/>
+    <circle cx="252" cy="480" r="18"/>
+    <circle cx="320" cy="492" r="16"/>
+    <circle cx="388" cy="480" r="19"/>
+    <circle cx="444" cy="492" r="15"/>
+    <circle cx="492" cy="480" r="21"/>
+  </g>
+  <g fill="none" stroke="#8a5a10" stroke-width="2" opacity=".8">
+    <circle cx="150" cy="480" r="10"/>
+    <circle cx="252" cy="480" r="9"/>
+    <circle cx="388" cy="480" r="9"/>
+    <circle cx="492" cy="480" r="10"/>
+  </g>
+
+  <ellipse cx="320" cy="512" rx="230" ry="38" fill="#000" opacity=".28"/>
+</svg>
